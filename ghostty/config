@@ -40,7 +40,7 @@ mouse-hide-while-typing = true
 
 # macOS-specific
 macos-titlebar-style = tabs
-macos-option-as-alt = true
+macos-option-as-alt = false
 window-padding-x = 10
 window-padding-y = 10
 window-decoration = true
