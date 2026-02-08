@@ -81,9 +81,9 @@ keybind = super+n=new_window
 keybind = super+comma=goto_split:top
 
 # Clipboard
-clipboard-read = allow
-clipboard-write = allow
-copy-on-select = clipboard
+# clipboard-read = allow
+# clipboard-write = allow
+copy-on-select = false
 
 # Cursor
 cursor-style = block
