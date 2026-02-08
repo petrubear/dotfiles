@@ -1,3 +1,5 @@
 .DS_Store
 lazy-lock.json
 /zellij/config.kdl.bak
+fish/fish_variables
+fish/**/*.local.fish
