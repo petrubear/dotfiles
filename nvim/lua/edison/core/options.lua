@@ -22,20 +22,19 @@ opt.hlsearch = true
 opt.iskeyword:append("-")
 
 -- clipboard
-opt.clipboard:append('unnamedplus')
+opt.clipboard:append("unnamedplus")
 
 -- split windows
 opt.splitbelow = true
 opt.splitright = true
-
 
 -- cursor
 opt.cursorline = true
 
 --appareance
 opt.termguicolors = true
-opt.background = 'dark'
-opt.signcolumn = 'yes'
+opt.background = "dark"
+opt.signcolumn = "yes"
 
 -- misc
 opt.undofile = true
@@ -46,4 +45,13 @@ opt.hidden = true
 opt.confirm = true
 
 -- backspace
-opt.backspace = 'indent,eol,start'
+opt.backspace = "indent,eol,start"
+
+opt.splitbelow = true
+opt.splitright = true
+
+opt.updatetime = 250
+opt.timeoutlen = 300
+
+opt.inccommand = "split"
+
