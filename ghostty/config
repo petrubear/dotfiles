@@ -64,8 +64,11 @@ mouse-hide-while-typing = true
 # macOS-specific
 macos-titlebar-style = tabs
 macos-option-as-alt = false
-window-padding-x = 10
-window-padding-y = 10
+window-padding-x = 4
+window-padding-y = 4
+window-height=25
+window-width=85
+window-save-state = never
 window-decoration = true
 
 # Shell integration
