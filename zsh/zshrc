@@ -1,0 +1,101 @@
+# zmodload zsh/zpr
+# exports {
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+export LESS=" -R "
+export GREP_OPTIONS='--color=auto'
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export HOMEBREW_NO_ENV_HINTS=1
+export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=true
+export CLAUDE_TELEMETRY_ENABLED=false
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+setopt GLOB_COMPLETE
+# }
+# keybinds {
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# Enable substring matching
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza $realpath'
+# }
+# path {
+export PATH=/opt/homebrew/bin:$PATH
+export PATH="/Users/edison/.local/bin:$PATH"
+export PATH="$PATH:/Users/edison/.lmstudio/bin"
+export PATH="/Users/edison/.antigravity/antigravity/bin:$PATH"
+# }
+# sdkman {
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# }
+# plugins {
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source "/opt/homebrew/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+    compinit
+fi
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+eval "$(fzf --zsh)"
+# }
+# alias {
+alias less='less -m -N -g -i -J --underline-special --SILENT'
+alias more='less'
+alias kubectl="kubecolor"
+alias vi="nvim"
+alias vim="nvim"
+alias ls="eza --icons"
+alias list="eza -bghl --git --icons --color=automatic"
+alias j="z"
+alias tail="tspin"
+# }
+#
+# functions {
+nvm() {
+    unset -f nvm node npm npx
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+    nvm "$@"
+}
+
+node() {
+    unset -f nvm node npm npx
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+    node "$@"
+}
+
+npm() {
+    unset -f nvm node npm npx
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+    npm "$@"
+}
+
+npx() {
+    unset -f nvm node npm npx
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+    npx "$@"
+}
+# }
+# zprof
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
