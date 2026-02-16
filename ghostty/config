@@ -1,6 +1,6 @@
 # Theme
-config-file = themes/van-helsing
-# config-file = themes/pro
+# config-file = themes/van-helsing
+config-file = themes/pro
 
 # Font (use what you have installed)
 font-family = "Monolisa Nerd Font"
