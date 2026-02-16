@@ -1,5 +1,6 @@
 # Theme
 config-file = themes/van-helsing
+# config-file = themes/pro
 
 # Font (use what you have installed)
 font-family = "Monolisa Nerd Font"
@@ -19,13 +20,14 @@ mouse-hide-while-typing = true
 # macOS-specific
 macos-titlebar-style = tabs
 macos-option-as-alt = false
-window-padding-x = 4
-window-padding-y = 4
-window-height=25
-window-width=85
+window-padding-x = 10
+window-padding-y = 10
+# window-height=25
+# window-width=85
+maximize = true
 window-save-state = never
 # window-decoration = none
-# macos-titlebar-style = hidden
+macos-titlebar-style = hidden
 
 # Shell integration
 shell-integration = detect
