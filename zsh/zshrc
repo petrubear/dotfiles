@@ -11,6 +11,7 @@ export LESS=" -R "
 export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
 export LSCOLORS=ExfxcxdxBxegedabagacad
+export SHELL_SESSIONS_DISABLE=1
 export SUDO_EDITOR=nvim
 export VISUAL=nvim
 HISTDUP=erase
