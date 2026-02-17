@@ -47,9 +47,6 @@ opt.confirm = true
 -- backspace
 opt.backspace = "indent,eol,start"
 
-opt.splitbelow = true
-opt.splitright = true
-
 opt.updatetime = 250
 opt.timeoutlen = 300
 

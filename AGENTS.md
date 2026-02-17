@@ -131,7 +131,7 @@ dotfiles/
 - **Plugins (via TPM)**:
   - `tmux-plugins/tmux-sensible` — sensible defaults
   - `tmux-plugins/tmux-yank` — clipboard integration (mouse yank disabled)
-  - `tmux-plugin/tmux-resurrect` — session persistence (**note: has a typo — should be `tmux-plugins`**)
+  - `tmux-plugins/tmux-resurrect` — session persistence
   - `catppuccin/tmux` — theme
   - `tmux-plugins/tmux-battery` — battery status module
 - **Settings**: Vi mode keys, mouse enabled, 1M history, 1-indexed windows, renumber on close, system clipboard, zero escape delay
@@ -211,11 +211,14 @@ dotfiles/
 
 ## Known Issues
 
-1. **Typo in tmux plugin**: `tmux-plugin/tmux-resurrect` should be `tmux-plugins/tmux-resurrect` (missing `s`) in `tmux/tmux.conf` line 44 — resurrect plugin likely not loading
-2. **Duplicate Neovim options**: `splitbelow` and `splitright` are set twice in `nvim/lua/edison/core/options.lua` (lines 28-29 and lines 50-51)
-3. **Duplicate Ghostty setting**: `macos-titlebar-style` appears twice in `ghostty/config` (lines 21 and 30) — second value wins
-4. **Deprecated Neovim API**: `vim.loop` in `nvim/lua/edison/lazy.lua` line 2 should be `vim.uv` for Neovim 0.10+
-5. **Dead config**: `nvim/lua/edison/plugins/colorscheme.lua` is `enabled = false` — can be removed since `dracula.lua` is the active colorscheme
+1. **Dead config**: `nvim/lua/edison/plugins/colorscheme.lua` is `enabled = false` — can be removed since `dracula.lua` is the active colorscheme
+
+## Recently Fixed
+
+1. ✅ **Tmux plugin typo**: Fixed in `tmux/tmux.conf` line 43 — now correctly uses `tmux-plugins/tmux-resurrect`
+2. ✅ **Duplicate Neovim options**: Fixed in `nvim/lua/edison/core/options.lua` — `splitbelow` and `splitright` now only appear once (lines 28-29)
+3. ✅ **Duplicate Ghostty setting**: Fixed in `ghostty/config` — `macos-titlebar-style` now only appears once (line 23)
+4. ✅ **Deprecated Neovim API**: Fixed in `nvim/lua/edison/lazy.lua` line 2 — now uses `vim.uv.fs_stat()` instead of `vim.loop`
 
 ## .gitignore
 
