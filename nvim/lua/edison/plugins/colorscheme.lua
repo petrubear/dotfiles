@@ -1,3 +1,4 @@
+-- This file is here to show me how to configure a theme as a plugin, but dracula pro is used by default.
 return {
 	"Mofiqul/dracula.nvim",
 	priority = 1000,
@@ -6,4 +7,3 @@ return {
 		vim.cmd("colorscheme dracula")
 	end,
 }
-

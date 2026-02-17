@@ -1,3 +1,5 @@
+-- This requires Dracula Pro.
+-- read instructions on how to install it first.
 return {
 	dir = vim.fn.stdpath("data") .. "/site/pack/themes/start/dracula_pro",
 	priority = 10000,

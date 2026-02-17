@@ -5,7 +5,6 @@ export CLAUDE_TELEMETRY_ENABLED=false
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export EDITOR=nvim
 export FCEDIT=nvim
-export GREP_OPTIONS='--color=auto'
 export HOMEBREW_NO_ENV_HINTS=1
 export LESS=" -R "
 export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
@@ -94,6 +93,7 @@ alias q='exit'
 alias quit='exit'
 alias rm='rm -iv'
 alias rmdir='rmdir -v'
+alias rg='rg --smart-case --hidden'
 alias tail='tspin'
 alias vi='nvim'
 alias vim='nvim'

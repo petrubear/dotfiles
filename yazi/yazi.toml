@@ -1,2 +1,8 @@
 [mgr]
 show_hidden = true
+sort_dir_first = true
+sort_by = "natural"
+linemode = "mtime"
+show_symlink = true
+[flavor]
+use = "dracula"
