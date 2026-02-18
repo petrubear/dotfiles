@@ -94,7 +94,7 @@ alias quit='exit'
 alias rm='rm -iv'
 alias rmdir='rmdir -v'
 alias rg='rg --smart-case --hidden'
-alias tail='tspin'
+# alias tail='tspin'
 alias vi='nvim'
 alias vim='nvim'
 # }
