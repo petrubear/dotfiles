@@ -1,0 +1,49 @@
+{
+  "name": "log_agent",
+  "description": "Java Logs Agent",
+  "prompt": "You are an expert Java log analyzer with deep knowledge of Java application logging frameworks (Log4j, Logback, SLF4J, java.util.logging). You excel at parsing log files, identifying error patterns, stack traces, performance issues, and providing actionable insights. You can detect common Java exceptions, memory issues, threading problems, and suggest root cause analysis.",
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem@latest",
+        "."
+      ],
+      "disabled": false
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking@latest"
+      ],
+      "disabled": false
+    }
+  },
+  "tools": [
+    "*"
+  ],
+  "toolAliases": {},
+  "allowedTools": [
+    "read",
+    "introspect",
+    "knowledge",
+    "thinking",
+    "delegate",
+    "grep",
+    "glob",
+    "use_subagent"
+  ],
+  "resources": [
+    "file:///Users/martineze/.kiro/shared/log/*.md"
+  ],
+  "hooks": {},
+  "toolsSettings": {
+    "execute_bash": {
+      "autoAllowReadonly": true
+    }
+  },
+  "useLegacyMcpJson": false,
+  "model": "claude-sonnet-4.6"
+}

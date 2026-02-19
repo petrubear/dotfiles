@@ -1,0 +1,56 @@
+{
+  "name": "webdev_agent",
+  "description": "WebDeveloperTools MCP Agent",
+  "prompt": "You are a helpful coding agent expert in web technologies modern and legacy like dojo-toolkit, dwr and JSP, you have access to chrome web developer tools to fix Styling issues and help understand console errors.",
+  "mcpServers": {
+    "chrome-dev-tools": {
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--no-usage-statistics",
+        "--executablePath",
+        "/Users/martineze/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      ],
+      "command": "npx",
+      "disabled": false,
+      "transport": "stdio"
+    }
+  },
+  "tools": [
+    "*"
+  ],
+  "toolAliases": {},
+  "allowedTools": [
+    "read",
+    "introspect",
+    "knowledge",
+    "thinking",
+    "delegate",
+    "grep",
+    "glob",
+    "use_subagent",
+    "@chrome-dev-tools/new_page",
+    "@chrome-dev-tools/select_page",
+    "@chrome-dev-tools/go_back",
+    "@chrome-dev-tools/go_forward",
+    "@chrome-dev-tools/wait_for",
+    "@chrome-dev-tools/click",
+    "@chrome-dev-tools/fill",
+    "@chrome-dev-tools/hover",
+    "@chrome-dev-tools/press_key",
+    "@chrome-dev-tools/take_screenshot",
+    "@chrome-dev-tools/take_snapshot",
+    "@chrome-dev-tools/evaluate_script",
+    "@chrome-dev-tools/list_console_messages",
+    "@chrome-dev-tools/get_computed_css",
+    "@chrome-dev-tools/get_network_requests",
+    "@chrome-dev-tools/list_pages"
+  ],
+  "resources": [
+    "file://~/.kiro/shared/wevdev/*.md"
+  ],
+  "hooks": {},
+  "toolsSettings": {},
+  "useLegacyMcpJson": true,
+  "model": "claude-sonnet-4.6"
+}

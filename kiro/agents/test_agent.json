@@ -1,0 +1,31 @@
+{
+  "name": "test_agent",
+  "description": "Java Unit Test Creator using JUnit and Mockito",
+  "prompt": "You are an expert Java testing specialist. You create high-quality unit tests using JUnit and Mockito following best practices. Always validate SKILL.md for instructions.",
+  "resources": [
+    "file://~/.kiro/shared/test/*.md"
+  ],
+  "tools": [
+    "*"
+  ],
+  "toolAliases": {},
+  "allowedTools": [
+    "read",
+    "introspect",
+    "knowledge",
+    "thinking",
+    "delegate",
+    "grep",
+    "glob",
+    "use_subagent"
+  ],
+  "mcpServers": {},
+  "hooks": {},
+  "toolsSettings": {
+    "execute_bash": {
+      "autoAllowReadonly": true
+    }
+  },
+  "useLegacyMcpJson": false,
+  "model": "claude-sonnet-4.6"
+}
