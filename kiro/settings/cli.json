@@ -1,0 +1,9 @@
+{
+  "app.disableAutoupdates": false,
+  "app.hideMenubarIcon": false,
+  "app.launchOnStartup": false,
+  "autocomplete.disable": true,
+  "autocomplete.theme": "dracula",
+  "codeWhisperer.shareCodeWhispererContentWithAWS": false,
+  "telemetry.enabled": false
+}

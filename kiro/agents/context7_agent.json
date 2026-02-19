@@ -1,0 +1,37 @@
+{
+  "name": "context7_agent",
+  "description": "Context7 MCP Agent",
+  "prompt": null,
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"],
+      "env": {
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
+      },
+      "disabled": false,
+      "autoApprove": ["resolve-library-id", "get-library-docs"]
+    }
+  },
+  "tools": [
+    "read",
+    "write",
+    "shell",
+    "report",
+    "introspect",
+    "knowledge",
+    "thinking",
+    "todo",
+    "delegate",
+    "grep",
+    "glob",
+    "@context7"
+  ],
+  "resources": ["file:///Users/edison/.kiro/shared/context7/*.md"],
+  "toolAliases": {},
+  "allowedTools": ["@context7", "read", "delegate", "use_subagent"],
+  "hooks": {},
+  "toolsSettings": {},
+  "useLegacyMcpJson": true,
+  "model": "claude-sonnet-4.6"
+}
