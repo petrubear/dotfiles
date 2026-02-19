@@ -1,0 +1,58 @@
+" conditions {{
+if exists('skip_defaults_vim')
+  finish
+endif
+if &compatible
+  set nocompatible
+endif
+silent! while 0
+  set nocompatible
+silent! endwhile
+" }}
+" defaults {{
+set backspace=indent,eol,start
+set hlsearch
+set ideajoin!
+set ideastatusicon=enabled
+set idearefactormode=select
+set ignorecase
+set incsearch!
+set keymodel=startsel,continueselect,stopselect
+set matchpairs=(:),{:},[:],<:>,/*:*/
+set multicursor
+set number
+set relativenumber
+set scrolloff=5
+set selectmode=mouse,key,cmd,ideaselection
+set showcmd
+set showmode
+set smartcase
+set wrapscan
+" }}
+" plugins {{
+set easymotion
+set multiple-cursors
+set commentary
+set sneak
+set highlightedyank
+
+let g:highlightedyank_highlight_duration = "1000"
+" }}
+" mapings {{
+let mapleader=","
+map Leader><Leader>b <Plug>(easymotion-b)
+nmap<Leader><Leader>b <Plug>(easymotion-b)
+map <Leader><Leader>w <Plug>(easymotion-w)
+nmap<Leader><Leader>w <Plug>(easymotion-w)
+map Q gq
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+" }}
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+:  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+:augroup END
