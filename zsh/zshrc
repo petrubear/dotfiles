@@ -1,3 +1,7 @@
+
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
+
 # zmodload zsh/zpr
 # exports {
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=true
@@ -125,6 +129,11 @@ npx() {
     npx "$@"
 }
 # }
+# Secrets
+[[ -s "$HOME/.zsh_secrets" ]] && source "$HOME/.zsh_secrets"
+
 # zprof
+
+
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
