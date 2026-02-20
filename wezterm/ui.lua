@@ -1,8 +1,9 @@
 local wezterm = require("wezterm")
+local colors = require("colors")
 local module = {}
 
 function module.apply_to_config(config)
-	config.color_scheme = "Dracula"
+	config.colors = colors["Dracula Pro"]
 	config.enable_tab_bar = false
 	config.font = wezterm.font("Monolisa Nerd Font")
 	-- config.font_rules = { { intensity = "Normal", font = wezterm.font("Monolisa Nerd Font", { weight = "Medium" }) } }
