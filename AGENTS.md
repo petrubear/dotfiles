@@ -4,7 +4,7 @@ This file provides guidance to AI coding agents when working with this repositor
 
 ## Repository Overview
 
-Personal dotfiles repository (`petrubear/dotfiles`) with configs for **10 tools**, managed as a plain Git repo on the `master` branch. Configs are stored in per-tool directories and manually symlinked to `~/.config/`. There are no install scripts or automation frameworks (no stow, chezmoi, etc.). Neovim Lazy.nvim auto-bootstraps on first run; TMux requires manual TPM installation before plugins work.
+Personal dotfiles repository (`petrubear/dotfiles`) with configs for **15 tools**, managed as a plain Git repo on the `master` branch. Configs are stored in per-tool directories and manually symlinked to `~/.config/`. There are no install scripts or automation frameworks (no stow, chezmoi, etc.). Neovim Lazy.nvim auto-bootstraps on first run; TMux requires manual TPM installation before plugins work.
 
 ## Repository Structure
 
@@ -13,6 +13,7 @@ dotfiles/
 ├── nvim/              # Neovim — primary editor (Lazy.nvim, 30 Lua files)
 │   ├── init.lua              # Entry point → requires edison.lazy
 │   ├── lazy-lock.json        # Plugin lockfile (gitignored)
+│   ├── TODO.md               # Pending work: Java/Spring/Guice improvements (untracked)
 │   └── lua/edison/
 │       ├── core/
 │       │   ├── init.lua      # Loads options + keymaps
@@ -48,16 +49,18 @@ dotfiles/
 │               ├── lsp.lua          # cmp-nvim-lsp capabilities
 │               └── mason.lua        # LSP server installer
 ├── zsh/
-│   └── zshrc                 # Primary shell config (131 lines)
+│   └── zshrc                 # Primary shell config (~140 lines, Kiro CLI pre/post blocks)
 ├── ghostty/
 │   ├── config                # Primary terminal emulator config
 │   └── themes/               # Theme files (Dracula Pro, Van Helsing)
 ├── tmux/
-│   └── tmux.conf             # Terminal multiplexer config
+│   ├── tmux.conf             # Terminal multiplexer config
+│   └── README.md             # TPM setup instructions
 ├── wezterm/
-│   ├── wezterm.lua           # Entry point — composes ui.lua + keybinds.lua
+│   ├── wezterm.lua           # Entry point — composes ui.lua + perf.lua
 │   ├── ui.lua                # Appearance settings
-│   └── keybinds.lua          # Tmux-style key bindings
+│   ├── perf.lua              # Performance settings (WebGPU, scrollback, animations)
+│   └── keybinds.lua          # Tmux-style key bindings (currently disabled in entry point)
 ├── starship/
 │   └── starship.toml         # Prompt config with custom Dracula palette
 ├── fish/
@@ -72,7 +75,33 @@ dotfiles/
 │   ├── opencode.json         # Local LLM IDE config (LM Studio)
 │   └── themes/dracula.json   # Custom Dracula theme for OpenCode
 ├── yazi/
-│   └── yazi.toml             # File manager config (minimal)
+│   ├── yazi.toml             # File manager config (minimal)
+│   └── flavors/
+│       └── dracula.yazi/     # Dracula color flavor for yazi
+├── bat/
+│   └── config                # bat pager config (Dracula theme)
+├── btop/
+│   ├── btop.conf             # System monitor config (Dracula theme, braille graphs)
+│   └── themes/
+│       └── dracula.theme     # Dracula color theme for btop
+├── ideavim/
+│   └── ideavimrc             # IdeaVim config for JetBrains IDEs
+├── kiro/
+│   ├── agents/               # 7 custom Kiro agent definitions (JSON)
+│   ├── settings/
+│   │   └── cli.json          # Kiro CLI settings (claude-sonnet-4.6, Dracula autocomplete)
+│   ├── shared/               # Per-domain context files (AGENTS.md per domain)
+│   │   ├── context7/         # Context7 MCP integration context
+│   │   ├── default/          # Default context
+│   │   ├── jira/             # Jira integration context
+│   │   ├── log/              # Log analysis context
+│   │   ├── oracle/           # Oracle DB context (includes MCP JAR files)
+│   │   ├── test/             # Testing context
+│   │   └── webdev/           # Web development context
+│   └── steering/
+│       └── coding-standards.md # Global coding standards (Java, Kotlin, TS, JSON, YAML, Shell, HTML, MD)
+└── lazygit/
+    └── config.yml            # lazygit TUI git client config (Dracula theme)
 ├── CLAUDE.md                 # AI context for Claude Code
 └── AGENTS.md                 # This file
 ```
@@ -87,11 +116,13 @@ dotfiles/
 - **20+ plugins**: Telescope (fuzzy finder), Treesitter (syntax), nvim-cmp (completion), nvim-tree (file explorer), Lualine (statusline), Bufferline (tabs), Gitsigns (git gutter), Flash (motions), Trouble (diagnostics list), Which-Key (keymap hints), Noice (UI), Dressing (improved selects), Autopairs, Surround, Rainbow Delimiters, Indent Blankline, Alpha (dashboard), formatting, linting, yank
 - **Core options**: Relative line numbers, 2-space indentation, system clipboard (`unnamedplus`), smart case search, cursorline, undofile, no swapfile/backup, term gui colors, dark background, splitbelow/splitright
 - **Window keymaps**: `<leader>sv` (vertical split), `<leader>sh` (horizontal split), `<leader>se` (equalize), `<leader>sx` (close split), tab management with `<leader>t{o,x,n,p,f}`
+- **Pending work**: `nvim/TODO.md` (untracked) documents planned Java/Spring/Guice improvements — nvim-jdtls, java-debug-adapter, google-java-format, checkstyle, XML treesitter parser, inlay hints
 
 ## Zsh — Primary Shell
 
 - **Editor**: `nvim` set as `EDITOR`, `VISUAL`, `SUDO_EDITOR`, and `FCEDIT`
 - **History**: 5000 lines, stored in `~/.zsh_history`, with full deduplication (`hist_ignore_all_dups`, `hist_save_no_dups`, `HISTDUP=erase`), shared across sessions (`sharehistory`)
+- **Kiro CLI integration**: Pre/post blocks at top and bottom of zshrc source Kiro shell hooks from `~/Library/Application Support/kiro-cli/shell/`
 - **Plugins (all via Homebrew)**:
   - `starship` — prompt
   - `zoxide` — smart directory jumping (aliased as `j`)
@@ -104,15 +135,18 @@ dotfiles/
 - **SDKMAN**: JVM language SDK management, sourced from `$HOME/.sdkman`
 - **Modern CLI replacements**:
   - `eza` → `ls` (with icons) and `list` (detailed with git info)
-  - `tspin` → `tail`
   - `kubecolor` → `kubectl`
   - `zoxide` → `cd` (aliased as `j`)
   - `thefuck` → `fk` (command correction)
-- **Common aliases**: `c` (clear), `q`/`quit` (exit), `vi`/`vim` (nvim), safe `cp`/`mv`/`rm` with `-iv` flags
+  - `rg` aliased with `--smart-case --hidden`
+  - Note: `tspin` → `tail` alias is currently commented out
+- **Common aliases**: `c` (clear), `q`/`quit` (exit), `vi`/`vim` (nvim), safe `cp`/`mv`/`rm` with `-iv` flags, `mkdir -pv`, `rmdir -v`, `more` → `less`
+- **`less` configuration**: Enhanced with `LESS` and `LESSOPEN` env vars; `less` alias uses `-m -N -g -i -J --underline-special --SILENT`
 - **PATH order**: `/opt/homebrew/bin`, `~/.local/bin`, `~/.lmstudio/bin`, `~/.antigravity/antigravity/bin`
 - **Keybinds**: `Ctrl-p`/`Ctrl-n` and arrow keys for history search backward/forward
 - **Completion**: Case-insensitive, substring matching, no menu (fzf-tab handles it), `LS_COLORS` integration
-- **Telemetry**: Claude and .NET telemetry explicitly disabled
+- **Secrets**: `~/.zsh_secrets` sourced if present (for tokens, API keys)
+- **Telemetry**: Claude and .NET telemetry explicitly disabled; `HOMEBREW_NO_ENV_HINTS=1`
 
 ## Ghostty — Primary Terminal Emulator
 
@@ -141,9 +175,11 @@ dotfiles/
 
 ## WezTerm — Alternative Terminal Emulator
 
-- **Config pattern**: Modular Lua — `wezterm.lua` is the entry point, composing `ui.lua` (appearance) and `keybinds.lua` (key bindings) via `apply_to_config(config)` pattern
+- **Config pattern**: Modular Lua — `wezterm.lua` is the entry point, composing `ui.lua` (appearance) and `perf.lua` (performance settings) via `apply_to_config(config)` pattern
+- **Note**: `keybinds.lua` exists but is currently commented out in `wezterm.lua`
+- **perf.lua settings**: Scrollback 100,000 lines, WebGPU frontend with `HighPerformance` power preference, scroll bar enabled, `animation_fps = 1` (animations disabled for snappiness)
 - **Leader key**: `Ctrl-a` (matches tmux for muscle memory)
-- **Keybinds**: Full tmux-style — `Leader + "` (vertical split), `Leader + %` (horizontal split), `Leader + h/j/k/l` (pane navigation), `Leader + H/J/K/L` (resize by 5), `Leader + 1-9` (tab switching), `Leader + c` (new tab), `Leader + o`/`z` (zoom toggle), `Leader + d`/`x` (close pane), `Leader + &` (close tab)
+- **Keybinds** (defined in `keybinds.lua`, currently disabled): Full tmux-style — `Leader + "` (vertical split), `Leader + %` (horizontal split), `Leader + h/j/k/l` (pane navigation), `Leader + H/J/K/L` (resize by 5), `Leader + 1-9` (tab switching), `Leader + c` (new tab), `Leader + o`/`z` (zoom toggle), `Leader + d`/`x` (close pane), `Leader + &` (close tab)
 
 ## Starship — Prompt
 
@@ -182,20 +218,59 @@ dotfiles/
 
 ## Yazi — File Manager
 
-- Minimal config (25 bytes in `yazi.toml`)
+- Minimal config in `yazi.toml`
+- **Dracula flavor**: `flavors/dracula.yazi/flavor.toml` applies Dracula colors to the UI
+
+## bat — Pager / Syntax Highlighter
+
+- Single-line config: `--theme="Dracula"`
+- Used as a `cat` replacement with syntax highlighting; integrates with `less` via `LESSOPEN`
+
+## btop — System Monitor
+
+- **Theme**: Dracula (loaded from `themes/dracula.theme`)
+- **Graph symbol**: Braille (highest resolution)
+- **Boxes shown**: cpu, mem, net, proc
+- **Process sorting**: by memory
+- **Notable settings**: `rounded_corners`, `terminal_sync`, `vim_keys = false` (disabled to avoid conflicts), temperature in Celsius, `update_ms = 2000`
+
+## IdeaVim — JetBrains IDE Vim Mode
+
+- **Leader**: `,`
+- **Plugins**: `easymotion`, `multiple-cursors`, `commentary`, `sneak`, `highlightedyank` (1000ms highlight duration)
+- **Key settings**: relative numbers, `ideajoin`, `ideastatusicon`, `idearefactormode=select`, smart case, `multicursor`, `scrolloff=5`
+- **Clipboard maps**: `<leader>y/p` for `"*` (primary), `<leader>Y/P` for `"+` (clipboard)
+- **EasyMotion maps**: `<Leader><Leader>b` (word back), `<Leader><Leader>w` (word forward)
+- **Auto-toggle**: Absolute line numbers in insert mode, relative in normal mode via `numbertoggle` autocmd
+
+## Kiro — AI IDE (AWS)
+
+- **Model**: `claude-sonnet-4.6` (default)
+- **Autocomplete theme**: Dracula; autocomplete disabled by default (`autocomplete.disable: true`)
+- **Telemetry**: Disabled
+- **Agents** (7 custom): `context7`, `jira`, `logs`, `oracle`, `petru` (general-purpose), `test`, `webdev`
+  - Each agent in `kiro/agents/*.json` defines allowed tools, MCP servers, resources, and model
+  - `petru_agent` is the general-purpose default; all agents use `claude-sonnet-4.6`
+- **Shared contexts** (`kiro/shared/`): Per-domain `AGENTS.md` files loaded as resources for relevant agents (context7, jira, log, oracle, test, webdev, default)
+  - `oracle/` also includes MCP JAR files (`MCPServer-1.0.0-runner.jar`, `ojdbc17`) for Oracle DB connectivity
+- **Steering** (`kiro/steering/coding-standards.md`): Global coding standards injected into all agents — covers Java (K&R braces, import order, Javadoc), Kotlin, TypeScript/JavaScript, JSON, YAML, Shell, HTML, Markdown
+
+## lazygit — TUI Git Client
+
+- **Theme**: Custom Dracula palette — active border `#FF79C6` (pink, bold), inactive border `#BD93F9` (purple), searching border `#8BE9FD` (cyan), selected line `#6272A4` (comment), unstaged changes `#FF5555` (red), default fg `#F8F8F2`
 
 ## Design Conventions
 
 | Convention | Details |
 |---|---|
-| **Theme** | Dracula everywhere (Ghostty, Starship, WezTerm, Neovim, Zellij, OpenCode). Tmux is the exception with Catppuccin Mocha |
+| **Theme** | Dracula everywhere — Ghostty, Starship, WezTerm, Neovim, Zellij, OpenCode, bat, btop, lazygit, Yazi, Kiro autocomplete. Tmux is the exception (Catppuccin Mocha) |
 | **Font** | Monolisa Nerd Font, 16px, across all terminal emulators |
-| **Vi mode** | Enabled in zsh, tmux, Neovim, zellij, and starship prompt indicators |
-| **Prefix/Leader** | `Ctrl-a` in tmux and WezTerm; `Space` in Neovim; `Ctrl-b` in zellij tmux-compat mode |
-| **Indentation** | 2 spaces universally |
+| **Vi mode** | Enabled in zsh, tmux, Neovim, zellij, starship prompt indicators, and IdeaVim |
+| **Prefix/Leader** | `Ctrl-a` in tmux and WezTerm; `Space` in Neovim; `Ctrl-b` in zellij tmux-compat mode; `,` in IdeaVim |
+| **Indentation** | 2 spaces universally (4 spaces per Kiro coding standards for Java/Kotlin/TS projects) |
 | **Commit style** | Conventional commits (`feat:`, `fix:`) |
 | **Module namespace** | Neovim Lua modules live under `edison/` (e.g., `require("edison.core.keymaps")`) |
-| **CLI philosophy** | Replace coreutils with modern Rust/Go alternatives (eza, tspin, zoxide, kubecolor) |
+| **CLI philosophy** | Replace coreutils with modern Rust/Go alternatives (eza, zoxide, kubecolor, rg) |
 | **Editor** | `nvim` aliased and exported everywhere — `vi`, `vim`, `EDITOR`, `VISUAL`, `SUDO_EDITOR`, `FCEDIT` |
 | **Safety aliases** | `cp`, `mv`, `rm` wrapped with interactive + verbose flags (`-iv`) |
 | **Plugin sources** | Neovim via Lazy.nvim, tmux via TPM, zsh via Homebrew, zellij built-in |
@@ -208,12 +283,16 @@ dotfiles/
 - **Zsh sections**: Organized with fold markers (`# section {` / `# }`) for editor navigation
 - **Ghostty config**: Flat key-value pairs with comments. Themes loaded via `config-file = themes/<name>`
 - **Zellij config**: KDL format with nested keybind blocks per mode
+- **Kiro agents**: JSON files in `kiro/agents/` with `name`, `description`, `prompt`, `allowedTools`, `mcpServers`, `resources`, `model`
+- **Kiro shared contexts**: Each subdirectory of `kiro/shared/` contains an `AGENTS.md` loaded as a resource by the corresponding agent
 
 ## Design Decisions
 
 1. **Dracula Pro (paid theme)**: `nvim/lua/edison/plugins/dracula.lua` points to a local `dir` path (`stdpath("data") .. "/site/pack/themes/start/dracula_pro"`) because Dracula Pro is a paid theme that must be manually installed — this is expected and not a bug.
 2. **Fallback colorscheme**: `nvim/lua/edison/plugins/colorscheme.lua` is intentionally kept with `enabled = false` as a fallback for machines where Dracula Pro is not installed. Do not remove this file.
 3. **Latest plugins preferred**: `lazy-lock.json` is gitignored on purpose — the intent is to always run the latest version of all Neovim plugins rather than pin specific versions.
+4. **WezTerm keybinds disabled**: `keybinds.lua` exists but is commented out in `wezterm.lua` — the file is preserved for reference/future use. Only `ui.lua` and `perf.lua` are active.
+5. **Kiro coding standards vs dotfiles indentation**: `kiro/steering/coding-standards.md` specifies 4-space indentation for Java/Kotlin/TS projects — this overrides the 2-space dotfiles convention when working in those language contexts.
 
 ## Recently Fixed
 
