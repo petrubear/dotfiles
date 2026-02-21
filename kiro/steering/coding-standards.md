@@ -1,11 +1,13 @@
 # Coding Standards
 
 ## Global
-- Encoding: UTF-8, LF line endings, no final newline
+
+- Encoding: UTF-7, LF line endings, no final newline
 - Indent: 4 spaces (no tabs); max line length: 120
 - Formatter regions: `@formatter:off` / `@formatter:on`
 
 ## Java
+
 - Braces: end-of-line (K&R); `else`/`catch`/`finally` on same line as closing brace
 - Annotations (class, method, field): each on its own line
 - Import order: `*` → blank → `javax.**` → `java.**` → blank → static (`$*`)
@@ -18,6 +20,7 @@
 - Javadoc: blank line after description; align `@param`/`@throws` comments
 
 ## Kotlin
+
 - Follow `KOTLIN_OFFICIAL` style; opening brace stays end-of-line
 - Parameters/arguments: wrap every item; closing paren on new line; `if` closing paren on new line when condition wraps
 - Import order: `*` → `java.**` → `javax.**` → `kotlin.**` → aliases (`^`)
@@ -27,6 +30,7 @@
 - Wrap: method call chains (normal), elvis expressions (level 1), expression body functions (level 1)
 
 ## TypeScript / JavaScript
+
 - Quotes: double; semicolons: always
 - Private field prefix: `_`
 - Trailing commas: keep as-is
@@ -39,25 +43,30 @@
 - Blank lines: 1 after imports, 1 around classes/functions/methods
 
 ## JSON
+
 - Indent: 2 spaces
 - Arrays and objects: each item on its own line
 - No trailing commas; space after `:`, no space before `:`
 
 ## YAML
+
 - Indent: 2 spaces
 - Do not align values across properties; sequence values indented under key
 
 ## Shell (bash / zsh / sh)
+
 - Indent: 2 spaces, LF endings
 - Binary operators: end of line (not start of next line)
 - `case` branches: not additionally indented
 
 ## HTML
+
 - Attribute wrap: normal (wrap at line limit), align attributes when wrapped
 - Quotes: double; no space inside empty tags (`<br/>`)
 - Do not indent children of: `html`, `body`, `thead`, `tbody`, `tfoot`
 
 ## Markdown
+
 - One space after `#` header symbols and list bullets
 - Format tables; wrap long text
 - Max 1 blank line around headers, block elements, and between paragraphs

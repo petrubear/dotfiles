@@ -1,0 +1,24 @@
+{
+  "name": "jasper_agent",
+  "description": "You are an expert on JasperReports creation, and migration.",
+  "prompt": "You are an expert on JasperReports you can create, edit, modify and migrate reports. You will focus on files with extensions [*.jrxml] and ignore everything else unless the user gives you a different instruction.",
+  "resources": [
+    "file://AmazonQ.md",
+    "file://AGENTS.md",
+    "file://README.md",
+    "file://~/.kiro/steering/**/*.md",
+    "file://~/.kiro/skills/jasper-helper/*.md"
+  ],
+  "tools": ["*"],
+  "toolAliases": {},
+  "allowedTools": [],
+  "mcpServers": {},
+  "hooks": {},
+  "toolsSettings": {
+    "execute_bash": {
+      "autoAllowReadonly": true
+    }
+  },
+  "useLegacyMcpJson": false,
+  "model": "claude-sonnet-4.6"
+}

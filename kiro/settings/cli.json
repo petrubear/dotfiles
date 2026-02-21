@@ -1,7 +1,7 @@
 {
   "app.disableAutoupdates": false,
   "app.hideMenubarIcon": false,
-  "app.launchOnStartup": false,
+  "app.launchOnStartup": true,
   "autocomplete.disable": true,
   "autocomplete.theme": "dracula",
   "chat.defaultModel": "claude-sonnet-4.6",
@@ -11,7 +11,7 @@
   "chat.enableNotifications": true,
   "chat.enableSubagent": true,
   "chat.enableTangentMode": true,
-  "chat.enableThinking": true,
+  "chat.enableThinking": false,
   "chat.enableTodoList": true,
   "codeWhisperer.shareCodeWhispererContentWithAWS": false,
   "knowledge.defaultExcludePatterns": [
@@ -32,5 +32,6 @@
   ],
   "knowledge.maxFiles": 3000,
   "mcp.loadedBefore": true,
-  "telemetry.enabled": false
+  "telemetry.enabled": false,
+  "chat.defaultAgent": "petru_agent"
 }

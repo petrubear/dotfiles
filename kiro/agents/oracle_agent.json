@@ -35,6 +35,10 @@
     "@oracle"
   ],
   "resources": [
+    "file://AmazonQ.md",
+    "file://AGENTS.md",
+    "file://README.md",
+    "file://~/.kiro/steering/**/*.md",
     "file://~/.kiro/shared/oracle/*.md"
   ],
   "hooks": {},

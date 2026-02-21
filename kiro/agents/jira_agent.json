@@ -3,6 +3,10 @@
   "description": "Jira MCP Agent",
   "prompt": "You are a helpful coding agent with expertise in Jira Tools and best practices. You can read log files attached to the Jira issue and use the log_explorer agent to get more information about it.",
   "resources": [
+    "file://AmazonQ.md",
+    "file://AGENTS.md",
+    "file://README.md",
+    "file://~/.kiro/steering/**/*.md",
     "file://~/.kiro/shared/jira/*.md"
   ],
   "mcpServers": {
@@ -22,9 +26,7 @@
       "transport": "stdio"
     }
   },
-  "tools": [
-    "*"
-  ],
+  "tools": ["*"],
   "toolAliases": {},
   "allowedTools": [
     "fetch",

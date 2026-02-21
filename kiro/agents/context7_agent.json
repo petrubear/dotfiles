@@ -27,7 +27,13 @@
     "glob",
     "@context7"
   ],
-  "resources": ["file:///Users/edison/.kiro/shared/context7/*.md"],
+  "resources": [
+    "file://AmazonQ.md",
+    "file://AGENTS.md",
+    "file://README.md",
+    "file://~/.kiro/steering/**/*.md",
+    "file://~/.kiro/shared/context7/*.md"
+  ],
   "toolAliases": {},
   "allowedTools": ["@context7", "read", "delegate", "use_subagent"],
   "hooks": {},

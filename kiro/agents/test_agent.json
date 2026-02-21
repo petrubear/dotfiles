@@ -3,11 +3,13 @@
   "description": "Java Unit Test Creator using JUnit and Mockito",
   "prompt": "You are an expert Java testing specialist. You create high-quality unit tests using JUnit and Mockito following best practices. Always validate SKILL.md for instructions.",
   "resources": [
+    "file://AmazonQ.md",
+    "file://AGENTS.md",
+    "file://README.md",
+    "file://~/.kiro/steering/**/*.md",
     "file://~/.kiro/shared/test/*.md"
   ],
-  "tools": [
-    "*"
-  ],
+  "tools": ["*"],
   "toolAliases": {},
   "allowedTools": [
     "read",

@@ -3,27 +3,13 @@
   "description": "Java Logs Agent",
   "prompt": "You are an expert Java log analyzer with deep knowledge of Java application logging frameworks (Log4j, Logback, SLF4J, java.util.logging). You excel at parsing log files, identifying error patterns, stack traces, performance issues, and providing actionable insights. You can detect common Java exceptions, memory issues, threading problems, and suggest root cause analysis.",
   "mcpServers": {
-    "filesystem": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-filesystem@latest",
-        "."
-      ],
-      "disabled": false
-    },
     "sequential-thinking": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-sequential-thinking@latest"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking@latest"],
       "disabled": false
     }
   },
-  "tools": [
-    "*"
-  ],
+  "tools": ["*"],
   "toolAliases": {},
   "allowedTools": [
     "read",
@@ -36,6 +22,10 @@
     "use_subagent"
   ],
   "resources": [
+    "file://AmazonQ.md",
+    "file://AGENTS.md",
+    "file://README.md",
+    "file://~/.kiro/steering/**/*.md",
     "file:///Users/martineze/.kiro/shared/log/*.md"
   ],
   "hooks": {},
