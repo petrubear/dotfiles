@@ -78,30 +78,6 @@ if type brew &>/dev/null; then
     compinit
 fi
 # }
-# alias {
-alias c='clear'
-alias cp='cp -iv'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias fk='thefuck'
-alias grep='grep --color=auto'
-alias j='z'
-alias kubectl='kubecolor'
-alias less='less -m -N -g -i -J --underline-special --SILENT'
-alias list='eza -bghl --git --icons --color=automatic'
-alias ls='eza --icons'
-alias mkdir='mkdir -pv'
-alias more='less'
-alias mv='mv -iv'
-alias q='exit'
-alias quit='exit'
-alias rm='rm -iv'
-alias rmdir='rmdir -v'
-alias rg='rg --smart-case --hidden'
-# alias tail='tspin'
-alias vi='nvim'
-alias vim='nvim'
-# }
 #
 # functions {
 nvm() {
@@ -129,6 +105,9 @@ npx() {
     npx "$@"
 }
 # }
+# Alias
+[[ -s "$HOME/.zsh_alias" ]] && source "$HOME/.zsh_alias"
+
 # Secrets
 [[ -s "$HOME/.zsh_secrets" ]] && source "$HOME/.zsh_secrets"
 
