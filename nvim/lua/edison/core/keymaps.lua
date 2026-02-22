@@ -98,3 +98,10 @@ keymap.set("n", "<leader>de", function()
 	require("telescope.builtin").diagnostics({ default_text = ":E:" })
 end)
 
+-- Flash
+vim.keymap.set({ "n" }, "<Leader><Leader>w", function()
+	require("flash").jump()
+end)
+vim.keymap.set({ "n" }, "<Leader><Leader>b", function()
+	require("flash").jump()
+end)
