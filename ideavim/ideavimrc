@@ -39,7 +39,7 @@ set highlightedyank
 let g:highlightedyank_highlight_duration = "1000"
 " }}
 " mapings {{
-let mapleader=","
+let mapleader=" "
 map Leader><Leader>b <Plug>(easymotion-b)
 nmap<Leader><Leader>b <Plug>(easymotion-b)
 map <Leader><Leader>w <Plug>(easymotion-w)
