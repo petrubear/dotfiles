@@ -1,0 +1,27 @@
+{
+    "kiroAgent.agentAutonomy": "Supervised",
+    "editor.fontSize": 15,
+    "editor.fontFamily": "Monolisa, 'Jetbrains Mono', Menlo, Monaco, monospace",
+    "kiroAgent.trustedCommands": [
+        "mvn clean compile",
+        "mvn test",
+        "mvn compile -q"
+    ],
+    "workbench.colorTheme": "Dracula Pro",
+    "workbench.activityBar.location": "top",
+    "vim.easymotion": true,
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": ["<leader>", "e", "e"], "commands": ["workbench.action.toggleSidebarVisibility"] },
+        { "before": ["<leader>", "e", "f"], "commands": ["workbench.files.action.showActiveFileInExplorer"] },
+        { "before": ["<leader>", "e", "r"], "commands": ["workbench.files.action.refreshFilesExplorer"] },
+        { "before": ["<C-h>"], "commands": ["workbench.action.focusLeftGroup"] },
+        { "before": ["<C-l>"], "commands": ["workbench.action.focusRightGroup"] },
+        { "before": ["<C-j>"], "commands": ["workbench.action.focusBelowGroup"] },
+        { "before": ["<C-k>"], "commands": ["workbench.action.focusAboveGroup"] },
+        { "before": ["<leader>", "z", "z"], "commands": ["workbench.action.toggleZenMode"] }
+    ],
+    "vim.commandLineModeKeyBindings": [
+
+    ]  
+}

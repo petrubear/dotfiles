@@ -3,7 +3,10 @@
   "app.hideMenubarIcon": false,
   "app.launchOnStartup": true,
   "autocomplete.disable": true,
+  "autocomplete.immediatelyRunGitAliases": false,
+  "autocomplete.insertSpaceAutomatically": false,
   "autocomplete.theme": "dracula",
+  "chat.defaultAgent": "petru_agent",
   "chat.defaultModel": "claude-sonnet-4.6",
   "chat.enableCheckpoint": true,
   "chat.enableCodeIntelligence": true,
@@ -14,6 +17,7 @@
   "chat.enableThinking": false,
   "chat.enableTodoList": true,
   "codeWhisperer.shareCodeWhispererContentWithAWS": false,
+  "inline.enabled": false,
   "knowledge.defaultExcludePatterns": [
     "**/target/**",
     "**/build/**",
@@ -32,6 +36,5 @@
   ],
   "knowledge.maxFiles": 3000,
   "mcp.loadedBefore": true,
-  "telemetry.enabled": false,
-  "chat.defaultAgent": "petru_agent"
+  "telemetry.enabled": false
 }
