@@ -4,7 +4,7 @@ This file provides guidance to AI coding agents when working with this repositor
 
 ## Repository Overview
 
-Personal dotfiles repository (`petrubear/dotfiles`) with configs for **15 tools**, managed as a plain Git repo on the `master` branch. Configs are stored in per-tool directories and manually symlinked to `~/.config/`. There are no install scripts or automation frameworks (no stow, chezmoi, etc.). Neovim Lazy.nvim auto-bootstraps on first run; TMux requires manual TPM installation before plugins work.
+Personal dotfiles repository (`petrubear/dotfiles`) with configs for **18 tools**, managed as a plain Git repo on the `master` branch. Configs are stored in per-tool directories and manually symlinked to `~/.config/`. There are no install scripts or automation frameworks (no stow, chezmoi, etc.). Neovim Lazy.nvim auto-bootstraps on first run; TMux requires manual TPM installation before plugins work.
 
 ## Repository Structure
 
@@ -13,7 +13,6 @@ dotfiles/
 ├── nvim/              # Neovim — primary editor (Lazy.nvim, 30 Lua files)
 │   ├── init.lua              # Entry point → requires edison.lazy
 │   ├── lazy-lock.json        # Plugin lockfile (gitignored)
-│   ├── TODO.md               # Pending work: Java/Spring/Guice improvements (untracked)
 │   └── lua/edison/
 │       ├── core/
 │       │   ├── init.lua      # Loads options + keymaps
@@ -87,7 +86,10 @@ dotfiles/
 ├── ideavim/
 │   └── ideavimrc             # IdeaVim config for JetBrains IDEs
 ├── kiro/
-│   ├── agents/               # 7 custom Kiro agent definitions (JSON)
+│   └── User/
+│       └── settings.json     # Kiro IDE editor settings (font, vim keybinds, theme, telemetry)
+├── kiro-cli/
+│   ├── agents/               # 8 custom Kiro agent definitions (JSON)
 │   ├── settings/
 │   │   └── cli.json          # Kiro CLI settings (claude-sonnet-4.6, Dracula autocomplete)
 │   ├── shared/               # Per-domain context files (AGENTS.md per domain)
@@ -98,8 +100,19 @@ dotfiles/
 │   │   ├── oracle/           # Oracle DB context (includes MCP JAR files)
 │   │   ├── test/             # Testing context
 │   │   └── webdev/           # Web development context
+│   ├── skills/
+│   │   └── jasper-helper/    # JasperReports 7 migration guide skill (SKILL.md)
 │   └── steering/
-│       └── coding-standards.md # Global coding standards (Java, Kotlin, TS, JSON, YAML, Shell, HTML, MD)
+│       ├── coding-standards.md # Global coding standards (Java, Kotlin, TS, JSON, YAML, Shell, HTML, MD)
+│       └── soul.md             # Agent personality/behavior guidelines
+├── vscode/
+│   └── User/
+│       └── settings.json     # VS Code settings (Vim plugin, Dracula Pro, Monolisa font)
+├── antigravity/
+│   └── User/
+│       └── settings.json     # Antigravity editor settings (mirrors VS Code config)
+├── homebrew/
+│   └── Brewfile              # Homebrew package manifest (brews, casks, taps)
 └── lazygit/
     └── config.yml            # lazygit TUI git client config (Dracula theme)
 ├── CLAUDE.md                 # AI context for Claude Code
@@ -111,12 +124,14 @@ dotfiles/
 - **Plugin manager**: Lazy.nvim — auto-bootstraps by cloning itself on first run. Setup in `lua/edison/lazy.lua` imports both `edison.plugins` and `edison.plugins.lsp`.
 - **Leader key**: `Space`
 - **Colorscheme**: Dracula (`dracula.lua` is active, `colorscheme.lua` is `enabled = false` as a disabled fallback)
-- **LSP**: `cmp-nvim-lsp` provides capabilities, Mason handles server installation, keymaps are defined via an `LspAttach` autocmd in `lsp.lua`. Key bindings: `gd` (definition), `gR` (references), `gi` (implementations), `K` (hover), `<leader>ca` (code action), `<leader>rn` (rename).
+- **LSP**: `cmp-nvim-lsp` provides capabilities, Mason handles server installation, keymaps are defined both in `keymaps.lua` (global) and via an `LspAttach` autocmd in `lsp.lua`. Key bindings: `<leader>gg` (hover), `<leader>gd` (definition), `<leader>gD` (declaration), `<leader>gi` (implementation), `<leader>gt` (type definition), `<leader>gr` (references), `<leader>gs` (signature help), `<leader>rr` (rename), `<leader>gf` (format), `<leader>ga` (code action), `<leader>gl` (float diagnostic), `<leader>gp`/`<leader>gn` (prev/next diagnostic)
+- **Java-specific keymaps**: `<leader>go` (organize imports via jdtls), `<leader>gu` (update project config), `<leader>tc` (test class), `<leader>tm` (test nearest method) — all filetype-guarded for Java only
+- **DAP debugging keymaps**: `<leader>b{b,c,l,r,a}` (breakpoint management), `<leader>d{c,j,k,o,d,t,r,l,i,?,f,h,e}` (debug control — continue, step over/into/out, disconnect, terminate, repl, frames, commands, etc.)
+- **Flash keymaps**: `<Leader><Leader>w` and `<Leader><Leader>b` for jump navigation
 - **Diagnostic signs**: Custom icons — ` ` (error), ` ` (warn), `󰠠 ` (hint), ` ` (info)
 - **20+ plugins**: Telescope (fuzzy finder), Treesitter (syntax), nvim-cmp (completion), nvim-tree (file explorer), Lualine (statusline), Bufferline (tabs), Gitsigns (git gutter), Flash (motions), Trouble (diagnostics list), Which-Key (keymap hints), Noice (UI), Dressing (improved selects), Autopairs, Surround, Rainbow Delimiters, Indent Blankline, Alpha (dashboard), formatting, linting, yank
 - **Core options**: Relative line numbers, 2-space indentation, system clipboard (`unnamedplus`), smart case search, cursorline, undofile, no swapfile/backup, term gui colors, dark background, splitbelow/splitright
 - **Window keymaps**: `<leader>sv` (vertical split), `<leader>sh` (horizontal split), `<leader>se` (equalize), `<leader>sx` (close split), tab management with `<leader>t{o,x,n,p,f}`
-- **Pending work**: `nvim/TODO.md` (untracked) documents planned Java/Spring/Guice improvements — nvim-jdtls, java-debug-adapter, google-java-format, checkstyle, XML treesitter parser, inlay hints
 
 ## Zsh — Primary Shell
 
@@ -236,24 +251,46 @@ dotfiles/
 
 ## IdeaVim — JetBrains IDE Vim Mode
 
-- **Leader**: `,`
+- **Leader**: `Space`
 - **Plugins**: `easymotion`, `multiple-cursors`, `commentary`, `sneak`, `highlightedyank` (1000ms highlight duration)
 - **Key settings**: relative numbers, `ideajoin`, `ideastatusicon`, `idearefactormode=select`, smart case, `multicursor`, `scrolloff=5`
 - **Clipboard maps**: `<leader>y/p` for `"*` (primary), `<leader>Y/P` for `"+` (clipboard)
 - **EasyMotion maps**: `<Leader><Leader>b` (word back), `<Leader><Leader>w` (word forward)
+- **Project explorer maps**: `<Leader>ee` (activate project tool window), `<Leader>ef` (select in project view), `<Leader>ec` (collapse all tool windows), `<Leader>er` (synchronize/refresh)
 - **Auto-toggle**: Absolute line numbers in insert mode, relative in normal mode via `numbertoggle` autocmd
 
 ## Kiro — AI IDE (AWS)
 
-- **Model**: `claude-sonnet-4.6` (default)
-- **Autocomplete theme**: Dracula; autocomplete disabled by default (`autocomplete.disable: true`)
-- **Telemetry**: Disabled
-- **Agents** (7 custom): `context7`, `jira`, `logs`, `oracle`, `petru` (general-purpose), `test`, `webdev`
-  - Each agent in `kiro/agents/*.json` defines allowed tools, MCP servers, resources, and model
+- **IDE settings** (`kiro/User/settings.json`): Editor settings — Monolisa font, relative line numbers, Dracula Pro theme, Vim plugin config, telemetry disabled, `kiroAgent.agentAutonomy: Supervised`, trusted Maven commands
+- **CLI settings** (`kiro-cli/settings/cli.json`): Model `claude-sonnet-4.6`, Dracula autocomplete theme, autocomplete disabled, subagent/checkpoint/tangent mode enabled, telemetry disabled
+- **Agents** (8 custom in `kiro-cli/agents/`): `context7`, `jasper` (JasperReports helper), `jira`, `logs`, `oracle`, `petru` (general-purpose), `test`, `webdev`
+  - Each agent JSON defines allowed tools, MCP servers, resources, and model
   - `petru_agent` is the general-purpose default; all agents use `claude-sonnet-4.6`
-- **Shared contexts** (`kiro/shared/`): Per-domain `AGENTS.md` files loaded as resources for relevant agents (context7, jira, log, oracle, test, webdev, default)
+- **Shared contexts** (`kiro-cli/shared/`): Per-domain `AGENTS.md` files loaded as resources for relevant agents (context7, jira, log, oracle, test, webdev, default)
   - `oracle/` also includes MCP JAR files (`MCPServer-1.0.0-runner.jar`, `ojdbc17`) for Oracle DB connectivity
-- **Steering** (`kiro/steering/coding-standards.md`): Global coding standards injected into all agents — covers Java (K&R braces, import order, Javadoc), Kotlin, TypeScript/JavaScript, JSON, YAML, Shell, HTML, Markdown
+- **Skills** (`kiro-cli/skills/`): `jasper-helper/SKILL.md` — JasperReports 7 migration guide for DynamicJasper/JacksonReportLoader format
+- **Steering** (`kiro-cli/steering/`): `coding-standards.md` (Java, Kotlin, TS, JSON, YAML, Shell, HTML, Markdown) and `soul.md` (agent personality/behavior) — injected into all agents
+
+## VSCode — Code Editor
+
+- **Vim plugin**: `vim.leader = "<space>"`, easymotion enabled, highlighted yank, `useSystemClipboard`
+- **Keymaps**: `<leader>ee` (toggle sidebar), `<leader>ef` (show file in explorer), `<leader>er` (refresh explorer), `<leader>zz` (zen mode), `Ctrl-h/j/k/l` (focus pane navigation)
+- **Theme**: Dracula Pro; icon theme: `material-icon-theme`
+- **Font**: Monolisa, 15px, with ligatures; terminal uses Monolisa Nerd Font 14px
+- **Telemetry**: Fully disabled; GitHub Copilot disabled globally
+- **Code Runner**: Configured executor map for 40+ languages
+
+## Antigravity — Code Editor
+
+- Shares nearly identical settings with VSCode (same Vim plugin config, font, theme, keymaps, telemetry)
+- No Copilot or Code Runner config (leaner settings file)
+
+## Homebrew — Package Manager
+
+- **Brewfile** (`homebrew/Brewfile`): Full package manifest for reproducible macOS setup
+- **Brews** (notable): `neovim`, `tmux`, `fish`, `zsh`, `starship`, `zoxide`, `fzf`, `fzf-tab`, `eza`, `bat`, `btop`, `lazygit`, `lazydocker`, `yazi`, `zellij`, `ripgrep`, `kubecolor`, `opencode`, `git-delta`, `ktlint`, `shellcheck`, `shfmt`, `uv`, `tailspin`, `thefuck`, `minikube`, `podman`, `gemini-cli`
+- **Casks**: `ghostty`, `claude-code`, `codex`, `dotnet-sdk`, `flutter`, `swiftformat-for-xcode`, `syntax-highlight`
+- **Taps**: `anchore/grype`, `dart-lang/dart`, `steipete/tap`, `tilt-dev/tap`
 
 ## lazygit — TUI Git Client
 
@@ -263,10 +300,10 @@ dotfiles/
 
 | Convention | Details |
 |---|---|
-| **Theme** | Dracula everywhere — Ghostty, Starship, WezTerm, Neovim, Zellij, OpenCode, bat, btop, lazygit, Yazi, Kiro autocomplete. Tmux is the exception (Catppuccin Mocha) |
-| **Font** | Monolisa Nerd Font, 16px, across all terminal emulators |
-| **Vi mode** | Enabled in zsh, tmux, Neovim, zellij, starship prompt indicators, and IdeaVim |
-| **Prefix/Leader** | `Ctrl-a` in tmux and WezTerm; `Space` in Neovim; `Ctrl-b` in zellij tmux-compat mode; `,` in IdeaVim |
+| **Theme** | Dracula everywhere — Ghostty, Starship, WezTerm, Neovim, Zellij, OpenCode, bat, btop, lazygit, Yazi, Kiro autocomplete, VSCode, Antigravity. Tmux is the exception (Catppuccin Mocha) |
+| **Font** | Monolisa Nerd Font, 16px, across all terminal emulators; Monolisa (non-Nerd) at 15px in editor GUIs |
+| **Vi mode** | Enabled in zsh, tmux, Neovim, zellij, starship prompt indicators, IdeaVim, VSCode (Vim plugin), and Antigravity (Vim plugin) |
+| **Prefix/Leader** | `Ctrl-a` in tmux and WezTerm; `Space` in Neovim, IdeaVim, VSCode, Antigravity; `Ctrl-b` in zellij tmux-compat mode |
 | **Indentation** | 2 spaces universally (4 spaces per Kiro coding standards for Java/Kotlin/TS projects) |
 | **Commit style** | Conventional commits (`feat:`, `fix:`) |
 | **Module namespace** | Neovim Lua modules live under `edison/` (e.g., `require("edison.core.keymaps")`) |
@@ -283,8 +320,10 @@ dotfiles/
 - **Zsh sections**: Organized with fold markers (`# section {` / `# }`) for editor navigation
 - **Ghostty config**: Flat key-value pairs with comments. Themes loaded via `config-file = themes/<name>`
 - **Zellij config**: KDL format with nested keybind blocks per mode
-- **Kiro agents**: JSON files in `kiro/agents/` with `name`, `description`, `prompt`, `allowedTools`, `mcpServers`, `resources`, `model`
-- **Kiro shared contexts**: Each subdirectory of `kiro/shared/` contains an `AGENTS.md` loaded as a resource by the corresponding agent
+- **Kiro agents**: JSON files in `kiro-cli/agents/` with `name`, `description`, `prompt`, `allowedTools`, `mcpServers`, `resources`, `model`
+- **Kiro shared contexts**: Each subdirectory of `kiro-cli/shared/` contains an `AGENTS.md` loaded as a resource by the corresponding agent
+- **Kiro skills**: Markdown files in `kiro-cli/skills/<name>/SKILL.md` with YAML front matter (`name`, `description`) followed by the skill content
+- **VSCode/Antigravity/Kiro IDE settings**: JSON files at `<tool>/User/settings.json`, following the VS Code settings format
 
 ## Design Decisions
 
@@ -292,7 +331,8 @@ dotfiles/
 2. **Fallback colorscheme**: `nvim/lua/edison/plugins/colorscheme.lua` is intentionally kept with `enabled = false` as a fallback for machines where Dracula Pro is not installed. Do not remove this file.
 3. **Latest plugins preferred**: `lazy-lock.json` is gitignored on purpose — the intent is to always run the latest version of all Neovim plugins rather than pin specific versions.
 4. **WezTerm keybinds disabled**: `keybinds.lua` exists but is commented out in `wezterm.lua` — the file is preserved for reference/future use. Only `ui.lua` and `perf.lua` are active.
-5. **Kiro coding standards vs dotfiles indentation**: `kiro/steering/coding-standards.md` specifies 4-space indentation for Java/Kotlin/TS projects — this overrides the 2-space dotfiles convention when working in those language contexts.
+5. **Kiro coding standards vs dotfiles indentation**: `kiro-cli/steering/coding-standards.md` specifies 4-space indentation for Java/Kotlin/TS projects — this overrides the 2-space dotfiles convention when working in those language contexts.
+6. **Kiro split into two directories**: `kiro/` holds IDE editor settings (`User/settings.json`, equivalent to VSCode user settings); `kiro-cli/` holds all CLI/agent config (agents, shared contexts, skills, steering, cli.json). These are separate concerns of the same tool.
 
 ## Recently Fixed
 
