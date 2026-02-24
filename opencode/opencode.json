@@ -8,10 +8,15 @@
       "headers": {
         "CONTEXT7_API_KEY": "{file:~/.config/secrets/context7}"
       },
-      "enabled": true
+      "enabled": false
     }
   },
   "provider": {
+    "openrouter": {
+      "options": {
+        "apiKey": "{env:OPENROUTER_API_KEY}"
+      }
+    },
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "LM Studio (local)",
