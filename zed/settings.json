@@ -7,7 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "base_keymap": "VSCode",
+  "base_keymap": "JetBrains",
   "relative_line_numbers": "enabled",
   "gutter": {
     "line_numbers": true,

@@ -9,7 +9,7 @@
   {
     "context": "Workspace",
     "bindings": {
-      // "shift shift": "file_finder::Toggle"
+      "shift shift": "file_finder::Toggle",
     },
   },
   {
@@ -21,13 +21,154 @@
   {
     "context": "Workspace",
     "bindings": {
-      "space e e": "workspace::ToggleLeftDock"
-    }
+      "space e e": "workspace::ToggleLeftDock",
+    },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "space a a": "workspace::ToggleRightDock"
-    }
-  }
+      "space a a": "workspace::ToggleRightDock",
+    },
+  },
+
+  // ============================================================
+  // BEGIN: Nvim keybind replication (added 2026-02-27)
+  // ============================================================
+
+  // --- General (normal mode) ---
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      // Clear search highlights
+      "space n h": "search::SelectAllMatches",
+    },
+  },
+
+  // --- Window / Split management (vim normal) ---
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      // Split window vertically
+      "space s v": "pane::SplitRight",
+      // Split window horizontally
+      "space s h": "pane::SplitDown",
+      // Close current split
+      "space s x": "pane::CloseActiveItem",
+    },
+  },
+
+  // --- Tab management (vim normal) ---
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      // Open new tab (new file)
+      "space t o": "workspace::NewFile",
+      // Close current tab
+      "space t x": "pane::CloseActiveItem",
+      // Next tab
+      "space t n": "pane::ActivateNextItem",
+    },
+  },
+
+  // --- LSP keybinds (vim normal) ---
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      // Go to definition
+      "space g d": "editor::GoToDefinition",
+      // Go to declaration
+      "space g D": "editor::GoToDeclaration",
+      // Go to implementation
+      "space g i": "editor::GoToImplementation",
+      // Go to type definition
+      "space g t": "editor::GoToTypeDefinition",
+      // Show references
+      "space g r": "editor::FindAllReferences",
+      // Hover documentation
+      "space g g": "editor::Hover",
+      // Format file
+      "space g f": "editor::Format",
+      // Code action
+      "space g a": "editor::ToggleCodeActions",
+      // Float diagnostic (line diagnostic)
+      "space g l": "editor::Hover",
+      // Rename symbol
+      "space r r": "editor::Rename",
+      // Smart rename (alternate binding from lsp.lua)
+      "space r n": "editor::Rename",
+      // Code action (alternate binding from lsp.lua)
+      "space c a": "editor::ToggleCodeActions",
+      // Show buffer diagnostics
+      "space D": "diagnostics::Deploy",
+      // Show line diagnostic
+      "space d": "editor::Hover",
+      // Document symbols / outline
+      "space t r": "outline::Toggle",
+      // Format file (alternate binding)
+      "space m p": "editor::Format",
+      // Restart LSP
+      "space r s": "editor::RestartLanguageServer",
+    },
+  },
+
+  // --- LSP keybinds (vim visual) ---
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      // Format selection
+      "space g f": "editor::Format",
+      // Code action on selection
+      "space c a": "editor::ToggleCodeActions",
+      // Format selection (alternate binding)
+      "space m p": "editor::Format",
+    },
+  },
+
+  // --- Telescope / Search equivalents (vim normal) ---
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      // Find files (fuzzy finder)
+      "space f f": "file_finder::Toggle",
+      // Find recent files
+      "space f r": "file_finder::Toggle",
+      // Live grep (search in project)
+      "space f s": "pane::DeploySearch",
+      // Find string under cursor
+      "space f c": "search::SelectAllMatches",
+    },
+  },
+
+  // --- File explorer (vim normal) ---
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      // Collapse all in project panel
+      "space e c": "project_panel::CollapseAllEntries",
+    },
+  },
+
+  // --- Trouble / Diagnostics equivalents (vim normal) ---
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      // Workspace diagnostics
+      "space x w": "diagnostics::Deploy",
+      // Document diagnostics (same action, no buffer filter available)
+      "space x d": "diagnostics::Deploy",
+    },
+  },
+
+  // --- Insert mode ---
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // Trigger completion manually
+      "ctrl-space": "editor::ShowCompletions",
+    },
+  },
+
+  // ============================================================
+  // END: Nvim keybind replication (added 2026-02-27)
+  // ============================================================
 ]
