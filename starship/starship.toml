@@ -167,13 +167,13 @@ min_time_to_notify = 45000
 
 [palettes.dracula]
 
-pink = "#ff79c6"
-red = "#ff5555"
-yellow = "#f1fa8c"
-green = "#50fa7b"
+pink = "#FF80BF"
+red = "#FF9580"
+yellow = "#FFFF80"
+green = "#8AFF80"
 blue = "#644ac9"
-purple = "#bd93f9"
-cyan = "#8be9fd"
+purple = "#9580FF"
+cyan = "#80FFEA"
 comment = "#6272a4"
 base = "#1e1e2e"
 mantle = "#181825"

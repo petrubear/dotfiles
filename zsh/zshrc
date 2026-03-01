@@ -1,8 +1,14 @@
+# zmodload zsh/zpr
 
 # Kiro CLI pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
 
-# zmodload zsh/zpr
+# path {
+export PATH=/opt/homebrew/bin:$PATH
+export PATH="/Users/edison/.local/bin:$PATH"
+export PATH="/Users/edison/.lmstudio/bin:$PATH"
+export PATH="/Users/edison/.antigravity/antigravity/bin:$PATH"
+# }
 # exports {
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=true
 export CLAUDE_TELEMETRY_ENABLED=false
@@ -54,12 +60,6 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-# }
-# path {
-export PATH=/opt/homebrew/bin:$PATH
-export PATH="/Users/edison/.local/bin:$PATH"
-export PATH="/Users/edison/.lmstudio/bin:$PATH"
-export PATH="/Users/edison/.antigravity/antigravity/bin:$PATH"
 # }
 # sdkman {
 export SDKMAN_DIR="$HOME/.sdkman"
