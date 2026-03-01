@@ -22,7 +22,7 @@ opt.hlsearch = true
 opt.iskeyword:append("-")
 
 -- clipboard
-opt.clipboard:append("unnamedplus")
+-- opt.clipboard:append("unnamedplus")
 
 -- split windows
 opt.splitbelow = true
@@ -51,4 +51,3 @@ opt.updatetime = 250
 opt.timeoutlen = 300
 
 opt.inccommand = "split"
-

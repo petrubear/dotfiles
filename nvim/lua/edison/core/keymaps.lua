@@ -22,6 +22,13 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
+-- clipboard
+keymap.set("n", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+keymap.set("v", "<leader>y", '"+y', { desc = "Yank selection to system clipboard" })
+keymap.set("n", "<leader>Y", '"+yy', { desc = "Yank line to system clipboard" })
+keymap.set("n", "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+keymap.set("v", "<leader>p", '"_dP', { desc = "Paste over selection (preserve yank)" })
+
 -- LSP
 keymap.set("n", "<leader>gg", "<cmd>lua vim.lsp.buf.hover()<CR>")
 keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
