@@ -1,3 +1,6 @@
+keybinding:
+  universal:
+    viMode: true
 gui:
   # DRACULA
   theme:
