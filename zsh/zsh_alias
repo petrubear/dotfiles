@@ -24,7 +24,7 @@ alias q='exit'
 alias quit='exit'
 alias rm='rm -iv'
 alias rmdir='rmdir -v'
-alias rg='rg --smart-case --hidden'
+alias rg='rg --smart-case'
 alias vi='nvim'
 alias vim='nvim'
 # }

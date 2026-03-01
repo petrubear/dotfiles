@@ -1,0 +1,6 @@
+style: "dracula"
+mouse: true
+pager: true
+all: false
+showLineNumbers: false
+preserveNewLines: false

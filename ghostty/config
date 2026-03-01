@@ -39,9 +39,8 @@ keybind = super+comma=goto_split:top
 keybind = shift+enter=text:\x1b\r
 
 # Clipboard
-# clipboard-read = allow
-# clipboard-write = allow
-copy-on-select = false
+clipboard-read = allow
+clipboard-write = allow
 
 # Cursor
 cursor-style = block
