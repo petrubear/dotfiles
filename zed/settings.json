@@ -8,34 +8,41 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "base_keymap": "JetBrains",
-  "relative_line_numbers": "enabled",
+  "buffer_font_family": "MonoLisa",
+  "buffer_font_features": {
+    "calt": true,
+  },
+  "buffer_font_size": 15,
+  "buffer_font_weight": 400,
+  "buffer_line_height": "comfortable",
+  "format_on_save": "on",
   "gutter": {
     "line_numbers": true,
   },
+  "icon_theme": "Material Icon Theme",
   "minimap": {
     "show": "never",
   },
+  "relative_line_numbers": "enabled",
   "show_edit_predictions": true,
-  "vim": {
-    "use_smartcase_find": true,
-    "toggle_relative_line_numbers": true,
-  },
-  "terminal": {
-    "font_size": 14.0,
-    "font_family": "MonoLisa Nerd Font",
-  },
-  "buffer_font_family": "MonoLisa",
-  "icon_theme": "Material Icon Theme",
+  "tabs": { "file_icons": true },
   "telemetry": {
     "diagnostics": false,
     "metrics": false,
   },
-  "vim_mode": true,
-  "ui_font_size": 16,
-  "buffer_font_size": 15,
-  "theme": {
-    "mode": "system",
-    "light": "Dracula Pro (Alucard)",
-    "dark": "Dracula Pro",
+  "terminal": {
+    "font_family": "MonoLisa Nerd Font",
+    "font_size": 14,
   },
+  "theme": {
+    "dark": "Dracula Pro",
+    "light": "Dracula Pro (Alucard)",
+    "mode": "system",
+  },
+  "ui_font_size": 16,
+  "vim": {
+    "toggle_relative_line_numbers": true,
+    "use_smartcase_find": true,
+  },
+  "vim_mode": true,
 }
