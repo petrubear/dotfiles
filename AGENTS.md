@@ -4,7 +4,7 @@ This file provides guidance to AI coding agents when working with this repositor
 
 ## Repository Overview
 
-Personal dotfiles repository (`petrubear/dotfiles`) with configs for **18 tools**, managed as a plain Git repo on the `master` branch. Configs are stored in per-tool directories and manually symlinked to `~/.config/`. There are no install scripts or automation frameworks (no stow, chezmoi, etc.). Neovim Lazy.nvim auto-bootstraps on first run; TMux requires manual TPM installation before plugins work.
+Personal dotfiles repository (`petrubear/dotfiles`) with configs for **19 tools**, managed as a plain Git repo on the `master` branch. Configs are stored in per-tool directories and manually symlinked to `~/.config/`. There are no install scripts or automation frameworks (no stow, chezmoi, etc.). Neovim Lazy.nvim auto-bootstraps on first run; TMux requires manual TPM installation before plugins work.
 
 ## Repository Structure
 
@@ -113,8 +113,10 @@ dotfiles/
 │       └── settings.json     # Antigravity editor settings (mirrors VS Code config)
 ├── homebrew/
 │   └── Brewfile              # Homebrew package manifest (brews, casks, taps)
-└── lazygit/
-    └── config.yml            # lazygit TUI git client config (Dracula theme)
+├── lazygit/
+│   └── config.yml            # lazygit TUI git client config (Dracula theme)
+├── claude/
+│   └── settings.json         # Claude Code settings (permissions, env vars, plugins, status line)
 ├── CLAUDE.md                 # AI context for Claude Code
 └── AGENTS.md                 # This file
 ```
@@ -292,6 +294,23 @@ dotfiles/
 - **Casks**: `ghostty`, `claude-code`, `codex`, `dotnet-sdk`, `flutter`, `swiftformat-for-xcode`, `syntax-highlight`
 - **Taps**: `anchore/grype`, `dart-lang/dart`, `steipete/tap`, `tilt-dev/tap`
 
+## Claude Code — AI CLI
+
+- **Config**: `claude/settings.json` — version-controlled at repo root (distinct from `~/.claude/` which is gitignored)
+- **Model**: `sonnet` (claude-sonnet-4-6)
+- **Teammate mode**: `tmux` — each agent gets its own tmux pane (requires running inside a tmux session; Ghostty alone does not support split-pane mode)
+- **Agent teams**: Enabled via `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` (still experimental as of 2026)
+- **LSP plugins**: `jdtls-lsp`, `pyright-lsp`, `swift-lsp` defined but currently set to `false` — enable per-project via `.claude/settings.json`
+- **Env vars**:
+  - `CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1` — returns to project root after each `cd`
+  - `CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1` — prevents Claude from overwriting tmux window titles
+  - `USE_BUILTIN_RIPGREP=0` — uses system `rg` (Homebrew) instead of bundled binary
+  - `DISABLE_TELEMETRY=1` / `DISABLE_ERROR_REPORTING=1` — privacy
+- **Permissions allow**: git ops (add/commit/diff/fetch/log/stash/status), Java tools (java/javac/jar/mvn/mvnw/gradle/gradlew), Docker (build/run/ps/logs/inspect/pull), docker-compose, npm/npx/pip/sdk/ktlint/shellcheck/ls, Edit/Write/Read/Glob/Grep/Task/WebFetch/WebSearch
+- **Permissions deny**: `git push *`, `rm -rf *`, `sudo *`, `.env` reads, `secrets/**` reads
+- **Status line**: Custom shell command showing `<model> in <dir> on <branch>[*] [ctx%]` with ANSI colors
+- **Design note**: `claude/` (no dot prefix) is tracked in git for portability; `~/.claude/` (dotted) is gitignored as it contains session state
+
 ## lazygit — TUI Git Client
 
 - **Theme**: Custom Dracula palette — active border `#FF79C6` (pink, bold), inactive border `#BD93F9` (purple), searching border `#8BE9FD` (cyan), selected line `#6272A4` (comment), unstaged changes `#FF5555` (red), default fg `#F8F8F2`
@@ -346,3 +365,5 @@ dotfiles/
 ## .gitignore
 
 Excluded from version control: `.DS_Store`, `lazy-lock.json`, `zellij/config.kdl.bak`, `fish/fish_variables`, `fish/**/*.local.fish`, `.claude/`, `.vscode/`
+
+Note: `claude/` (without dot) is intentionally tracked — it holds the shareable Claude Code settings. `.claude/` (with dot) is gitignored as it contains session state, memory, and local caches.
