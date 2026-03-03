@@ -2,7 +2,7 @@
 
 ## Default Schema
 
-The default schema for all database objects is `EEFISA_PREPROD` unless the user specifies a different one. If an object is not found there, check the `EAPPFISA_PREPROD`  
+The default schema for all database objects is `EEFISA_PREPROD` unless the user specifies a different one. If an object is not found there, check the `EAPPFISA_PREPROD`
 
 ## Query Templates (QT)
 
@@ -23,7 +23,7 @@ When the user asks about a BT or BusinessTemplate:
 3. Also look up the parent application in `TAPD_APPLICATION` using the `APPLICATION_ID` from the BT. Return: `APPLICATION_ID`, `SHORT_NAME`, `CONTROLLER`.
 4. For deeper detail, check related tables: `TAPD_BT_FIELD`, `TAPD_VISUAL_BT_FIELD`, `TAPD_VISUAL_BT_FIELD_QT`, `TAPD_BT_GROUP`.
 5. Any table matching `TAPD%BT%` may be related. Ignore tables ending in `_HIS`.
-6. If the `TYPE` column on `TAPD_BUSINESS_TEMPLATE` is `3` or `4` tell the user that this is a Custom BT and provide the value of the `URL` column. 
+6. If the `TYPE` column on `TAPD_BUSINESS_TEMPLATE` is `3` or `4` tell the user that this is a Custom BT and provide the value of the `URL` column.
 
 ## Sequences
 

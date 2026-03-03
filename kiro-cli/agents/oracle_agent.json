@@ -4,24 +4,16 @@
   "prompt": "You are a helpful Oracle, PL/SQL, Forms coding agent, the default schema for all database objects is EEFISA_PREPROD unless a different one is provided",
   "mcpServers": {
     "oracle": {
+      "command": "~/Applications/oracle/sqlcl/bin/sql",
       "args": [
-        "-Dquarkus.log.file.enable=false",
-        "-Djava.util.logging.config.file=/dev/null",
-        "-cp",
-        "/Users/martineze/.kiro/shared/oracle/mcp/MCPServer-1.0.0-runner.jar:/Users/martineze/.kiro/shared/oracle/mcp/ojdbc17-23.9.0.25.07.jar",
-        "io.quarkus.runner.GeneratedMain"
+        "-mcp"
       ],
-      "command": "~/.sdkman/candidates/java/21/bin/java",
-      "disabled": false,
-      "env": {
-        "jdbc.password": "${ORACLE_AGENT_PASSWORD}",
-        "jdbc.url": "${ORACLE_AGENT_URL}",
-        "jdbc.user": "${ORACLE_AGENT_USER}",
-        "jdbc.max_long_data": "32000"
-      }
+      "disabled": false
     }
   },
-  "tools": ["*"],
+  "tools": [
+    "*"
+  ],
   "toolAliases": {},
   "allowedTools": [
     "read",

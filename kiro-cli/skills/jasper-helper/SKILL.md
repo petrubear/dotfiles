@@ -13,8 +13,8 @@ When using **DynamicJasper with JasperReports 7**, reports are loaded using `Jac
 
 ## Successfully Migrated Files
 
-✅ **FisaReportDefaultTemplate.jrxml** - Working reference implementation  
-✅ **FisaReportBlankTemplate.jrxml**  
+✅ **FisaReportDefaultTemplate.jrxml** - Working reference implementation
+✅ **FisaReportBlankTemplate.jrxml**
 ✅ **FisaReportDefaultTemplate_sub.jrxml**
 
 ## Quick Reference: Key Differences
@@ -39,8 +39,8 @@ When using **DynamicJasper with JasperReports 7**, reports are loaded using `Jac
 **❌ WRONG (Standard XSD):**
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" 
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="...">
 ```
 
@@ -130,7 +130,7 @@ All report elements use `<element kind="...">` with ALL attributes directly on t
 
 **✅ CORRECT (JacksonReportLoader):**
 ```xml
-<element kind="staticText" key="text-1" x="10" y="10" width="100" height="20" uuid="..." 
+<element kind="staticText" key="text-1" x="10" y="10" width="100" height="20" uuid="..."
          hTextAlign="Center" fontSize="14" bold="true" pdfFontName="Helvetica-Bold">
     <text><![CDATA[Hello]]></text>
 </element>
@@ -228,7 +228,7 @@ All report elements use `<element kind="...">` with ALL attributes directly on t
 - Images: `<expression><![CDATA[...]]></expression>`
 
 **❌ DO NOT USE:**
-- `<textFieldExpression>` 
+- `<textFieldExpression>`
 - `<imageExpression>`
 
 ### 6. Box Element (Borders)
@@ -252,12 +252,12 @@ Box elements can be kept for complex borders:
 Styles use the same attribute naming:
 
 ```xml
-<style name="HeaderStyle" 
-       hTextAlign="Center" 
-       vTextAlign="Middle" 
-       fontName="Arial" 
-       fontSize="12" 
-       bold="true" 
+<style name="HeaderStyle"
+       hTextAlign="Center"
+       vTextAlign="Middle"
+       fontName="Arial"
+       fontSize="12"
+       bold="true"
        italic="false"
        underline="false"
        strikeThrough="false"
@@ -274,77 +274,77 @@ Styles use the same attribute naming:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport name="Report" pageWidth="842" pageHeight="1190" columnWidth="782" 
-              leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" 
+<jasperReport name="Report" pageWidth="842" pageHeight="1190" columnWidth="782"
+              leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20"
               uuid="078ed3c9-6195-4f23-8b09-8aec12819ae6">
     <property name="ireport.encoding" value="UTF-8"/>
     <import value="net.sf.jasperreports.engine.*"/>
     <import value="java.util.*"/>
     <import value="net.sf.jasperreports.engine.data.*"/>
-    
-    <style name="HEADER" hTextAlign="Center" vTextAlign="Middle" 
+
+    <style name="HEADER" hTextAlign="Center" vTextAlign="Middle"
            fontName="Arial" fontSize="12" bold="true"/>
-    
+
     <parameter name="REPORT_PATH" class="java.lang.String" forPrompting="false"/>
     <parameter name="REPORT_TITLE" class="java.lang.String" forPrompting="false"/>
-    
+
     <background height="0" splitType="Stretch"/>
-    
+
     <title height="80" splitType="Stretch">
-        <element kind="staticText" key="title-1" x="200" y="10" width="400" height="30" 
-                 uuid="a1b2c3d4-e5f6-7890-1234-567890abcdef" 
+        <element kind="staticText" key="title-1" x="200" y="10" width="400" height="30"
+                 uuid="a1b2c3d4-e5f6-7890-1234-567890abcdef"
                  hTextAlign="Center" fontSize="16" bold="true">
             <text><![CDATA[Report Title]]></text>
         </element>
-        <element kind="image" key="logo" x="10" y="10" width="100" height="50" 
+        <element kind="image" key="logo" x="10" y="10" width="100" height="50"
                  uuid="b2c3d4e5-f6a7-8901-2345-67890abcdef1">
             <expression><![CDATA[$P{REPORT_PATH} + "logo.gif"]]></expression>
         </element>
-        <element kind="textField" key="date" x="650" y="10" width="130" height="20" 
-                 uuid="c3d4e5f6-a7b8-9012-3456-7890abcdef12" 
+        <element kind="textField" key="date" x="650" y="10" width="130" height="20"
+                 uuid="c3d4e5f6-a7b8-9012-3456-7890abcdef12"
                  pattern="dd/MM/yyyy HH:mm" blankWhenNull="false">
             <expression><![CDATA[new Date()]]></expression>
         </element>
     </title>
-    
+
     <pageHeader height="30" splitType="Stretch">
-        <element kind="line" key="line-1" x="0" y="25" width="782" height="1" 
+        <element kind="line" key="line-1" x="0" y="25" width="782" height="1"
                  uuid="d4e5f6a7-b8c9-0123-4567-890abcdef123"/>
     </pageHeader>
-    
+
     <columnHeader height="20" splitType="Stretch">
-        <element kind="staticText" key="col1" x="0" y="0" width="100" height="20" 
-                 uuid="e5f6a7b8-c9d0-1234-5678-90abcdef1234" 
+        <element kind="staticText" key="col1" x="0" y="0" width="100" height="20"
+                 uuid="e5f6a7b8-c9d0-1234-5678-90abcdef1234"
                  hTextAlign="Center" bold="true">
             <text><![CDATA[Column 1]]></text>
         </element>
     </columnHeader>
-    
+
     <detail>
         <band height="20" splitType="Stretch">
-            <element kind="textField" key="field1" x="0" y="0" width="100" height="20" 
-                     uuid="f6a7b8c9-d0e1-2345-6789-0abcdef12345" 
+            <element kind="textField" key="field1" x="0" y="0" width="100" height="20"
+                     uuid="f6a7b8c9-d0e1-2345-6789-0abcdef12345"
                      blankWhenNull="true">
                 <expression><![CDATA[$F{fieldName}]]></expression>
             </element>
         </band>
     </detail>
-    
+
     <columnFooter height="20" splitType="Stretch">
-        <element kind="line" key="line-2" x="0" y="0" width="782" height="1" 
+        <element kind="line" key="line-2" x="0" y="0" width="782" height="1"
                  uuid="a7b8c9d0-e1f2-3456-7890-abcdef123456"/>
     </columnFooter>
-    
+
     <pageFooter height="20" splitType="Stretch">
-        <element kind="textField" key="pageNum" x="700" y="5" width="80" height="15" 
-                 uuid="b8c9d0e1-f2a3-4567-8901-bcdef1234567" 
+        <element kind="textField" key="pageNum" x="700" y="5" width="80" height="15"
+                 uuid="b8c9d0e1-f2a3-4567-8901-bcdef1234567"
                  blankWhenNull="false" hTextAlign="Right">
             <expression><![CDATA["Page " + $V{PAGE_NUMBER}]]></expression>
         </element>
     </pageFooter>
-    
+
     <lastPageFooter height="20" splitType="Stretch"/>
-    
+
     <summary height="50" splitType="Stretch"/>
 </jasperReport>
 ```
@@ -432,7 +432,7 @@ For each element (staticText, textField, image, line, etc.):
 
 **After:**
 ```xml
-<element kind="staticText" key="text1" x="10" y="10" width="100" height="20" uuid="..." 
+<element kind="staticText" key="text1" x="10" y="10" width="100" height="20" uuid="..."
          hTextAlign="Center" fontSize="14" bold="true">
     <text><![CDATA[Hello]]></text>
 </element>
@@ -474,8 +474,8 @@ Deploy and test the report with actual data.
 
 **After:**
 ```xml
-<element kind="staticText" x="0" y="0" width="200" height="30" uuid="..." 
-         hTextAlign="Center" vTextAlign="Middle" fontName="Arial" fontSize="16" 
+<element kind="staticText" x="0" y="0" width="200" height="30" uuid="..."
+         hTextAlign="Center" vTextAlign="Middle" fontName="Arial" fontSize="16"
          bold="true" pdfFontName="Helvetica-Bold">
     <text><![CDATA[Title Text]]></text>
 </element>
@@ -493,7 +493,7 @@ Deploy and test the report with actual data.
 
 **After:**
 ```xml
-<element kind="textField" x="100" y="10" width="150" height="20" uuid="..." 
+<element kind="textField" x="100" y="10" width="150" height="20" uuid="..."
          pattern="dd/MM/yyyy" blankWhenNull="true" hTextAlign="Right">
     <expression><![CDATA[$F{date}]]></expression>
 </element>
@@ -556,7 +556,7 @@ Or with pen styling:
 
 **After:**
 ```xml
-<element kind="textField" x="50" y="50" width="100" height="30" uuid="..." 
+<element kind="textField" x="50" y="50" width="100" height="30" uuid="..."
          blankWhenNull="false" hTextAlign="Center">
     <box>
         <topPen lineWidth="1.0"/>
@@ -571,47 +571,47 @@ Or with pen styling:
 ## Troubleshooting
 
 ### Error: "Unrecognized field 'xmlns'"
-**Cause:** Namespace declarations present  
+**Cause:** Namespace declarations present
 **Fix:** Remove all `xmlns` attributes from `<jasperReport>`
 
 ### Error: "Unrecognized field 'hAlign'"
-**Cause:** Using old attribute names  
+**Cause:** Using old attribute names
 **Fix:** Change to `hTextAlign`, `vTextAlign`
 
 ### Error: "Unrecognized field 'isBold'"
-**Cause:** Using old boolean attribute names  
+**Cause:** Using old boolean attribute names
 **Fix:** Change to `bold`, `italic`, `underline`, `strikeThrough`
 
 ### Error: "Unrecognized field 'band'"
-**Cause:** Band wrapper in wrong section  
+**Cause:** Band wrapper in wrong section
 **Fix:** Remove `<band>` wrapper except in `<detail>` section
 
 ### Error: "Unrecognized field 'staticText'"
-**Cause:** Nested element structure  
+**Cause:** Nested element structure
 **Fix:** Flatten - move all attributes to `<element kind="staticText">`
 
 ### Error: "Unrecognized field 'textElement'"
-**Cause:** Nested textElement tag  
+**Cause:** Nested textElement tag
 **Fix:** Move attributes directly to `<element>` tag
 
 ### Error: "Unrecognized field 'textFieldExpression'"
-**Cause:** Using specific expression tag  
+**Cause:** Using specific expression tag
 **Fix:** Change to generic `<expression>` tag
 
 ### Error: "Unrecognized field 'imageExpression'"
-**Cause:** Using specific expression tag  
+**Cause:** Using specific expression tag
 **Fix:** Change to generic `<expression>` tag
 
 ### Error: "Unrecognized field 'graphicElement'"
-**Cause:** Using `<graphicElement>` wrapper inside line elements  
+**Cause:** Using `<graphicElement>` wrapper inside line elements
 **Fix:** Remove `<graphicElement>` tag completely from line elements. Lines don't support this nested element in JacksonReportLoader format.
 
 ### Error: "missing type id property 'kind'"
-**Cause:** Missing `kind` attribute on `<element>`  
+**Cause:** Missing `kind` attribute on `<element>`
 **Fix:** Add `kind="staticText"`, `kind="textField"`, etc.
 
 ### Error: "Unrecognized field 'height'" in detail section
-**Cause:** Missing `<band>` wrapper in detail  
+**Cause:** Missing `<band>` wrapper in detail
 **Fix:** Wrap detail content with `<band height="..." splitType="Stretch">`
 
 ## Validation Checklist
@@ -822,11 +822,11 @@ All report elements must use `<element kind="...">` wrapper with ALL attributes 
     <property name="ireport.encoding" value="UTF-8"/>
     <import value="net.sf.jasperreports.engine.*"/>
     <import value="java.util.*"/>
-    
+
     <style name="HEADER" hTextAlign="Center" vTextAlign="Middle" fontName="Arial" fontSize="12" bold="true"/>
-    
+
     <parameter name="REPORT_PATH" class="java.lang.String" forPrompting="false"/>
-    
+
     <title height="80" splitType="Stretch">
         <element kind="staticText" key="title-1" x="0" y="0" width="782" height="30" uuid="..." hTextAlign="Center" fontSize="16" bold="true">
             <text><![CDATA[Report Title]]></text>
@@ -838,29 +838,29 @@ All report elements must use `<element kind="...">` wrapper with ALL attributes 
             <expression><![CDATA[new Date()]]></expression>
         </element>
     </title>
-    
+
     <pageHeader height="30" splitType="Stretch">
         <element kind="line" key="line-1" x="0" y="25" width="782" height="1" uuid="..."/>
     </pageHeader>
-    
+
     <columnHeader height="20" splitType="Stretch"/>
-    
+
     <detail>
         <band height="20" splitType="Stretch"/>
     </detail>
-    
+
     <columnFooter height="20" splitType="Stretch">
         <element kind="line" key="line-2" x="0" y="0" width="782" height="1" uuid="...">
             <graphicElement fill="Solid"/>
         </element>
     </columnFooter>
-    
+
     <pageFooter height="20" splitType="Stretch">
         <element kind="textField" key="pageNum" x="700" y="5" width="80" height="15" uuid="..." blankWhenNull="false" hTextAlign="Right">
             <expression><![CDATA["Page " + $V{PAGE_NUMBER}]]></expression>
         </element>
     </pageFooter>
-    
+
     <summary height="50" splitType="Stretch"/>
 </jasperReport>
 ```
