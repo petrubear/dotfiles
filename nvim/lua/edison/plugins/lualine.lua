@@ -60,6 +60,15 @@ return {
 			},
 			sections = {
 				lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
+				lualine_b = {
+					{
+						function()
+							local reg = vim.fn.reg_recording()
+							return reg ~= "" and "󰑋 @" .. reg or ""
+						end,
+						color = { fg = "#FF4A4A", gui = "bold" },
+					},
+				},
 				lualine_x = {
 					{
 						lazy_status.updates,
