@@ -14,5 +14,6 @@ repos:
       - id: check-yaml
       - id: detect-private-key
       - id: end-of-file-fixer
+        exclude: "^fish/conf\\.d/.*\\.fish$"
       - id: trailing-whitespace
         exclude: "^fish/conf\\.d/.*\\.fish$"

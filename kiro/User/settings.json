@@ -109,5 +109,9 @@
     "vim.useSystemClipboard": true,
     "workbench.activityBar.location": "top",
     "workbench.colorTheme": "Dracula Pro",
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.iconTheme": "material-icon-theme",
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredDarkColorTheme": "Dracula Pro",
+    "workbench.preferredLightColorTheme": "Dracula Pro (Alucard)",
+    "window.systemColorTheme": "auto"
 }
