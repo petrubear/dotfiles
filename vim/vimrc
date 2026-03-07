@@ -1,0 +1,255 @@
+"Vundle config git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+set nocompatible
+filetype off
+
+" Begin Vundle {{
+" //cSpell:disable
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'airblade/vim-gitgutter'
+" Plugin 'ayu-theme/ayu-vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'dense-analysis/ale'
+Plugin 'easymotion/vim-easymotion'
+" Plugin 'gmarik/Vundle.vim'
+" Plugin 'joshdick/onedark.vim'
+Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'luchermitte/vim-refactor'
+Plugin 'luochen1990/rainbow'
+" Plugin 'neoclide/coc.nvim'
+Plugin 'preservim/nerdtree'
+Plugin 'rakr/vim-one'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'wellle/targets.vim'
+Plugin 'machakann/vim-highlightedyank'
+Plugin 'tpope/vim-fugitive'
+" Plugin 'oblitum/youcompleteme'
+Plugin 'github/copilot.vim'
+" Plugin 'codota/tabnine-vim'
+call vundle#end()
+
+let g:rainbow_active=1
+let g:rainbow_conf = {
+\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\	'guis': [''],
+\	'cterms': [''],
+\	'operators': '_,_',
+\ 'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\	'separately': {
+\		'xml': 0,
+\		'html': 0,
+\   'css': 0,
+\	}
+\}
+" //cSpell:enable
+" }}
+
+if has("syntax")
+ syntax on
+endif
+
+if has("autocmd")
+ filetype plugin indent on
+endif
+
+set autoindent
+set autoread
+set background=dark
+set backspace=indent,eol,start
+set belloff=all
+set cindent
+set confirm
+set cursorline
+set encoding=utf-8
+set expandtab
+set guifont=PragmataPro:h14
+set hidden
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
+set mouse=a
+set nobackup
+set nowritebackup
+set nocp
+set noerrorbells
+set nofoldenable
+set noshowmode
+set noswapfile
+set nowb
+set nowrap
+set number
+set relativenumber
+set ruler
+set scrolloff=3
+set selection=exclusive
+set selectmode=mouse,key
+set signcolumn=yes
+set shiftwidth=2
+set shortmess+=c
+set showcmd
+set showmatch
+set showmode
+set sidescrolloff=5
+set smartcase
+set smartindent
+set softtabstop=2
+"set spell
+set tabstop=2
+set title
+set updatetime=250
+set viminfo+=h
+set visualbell
+set wildmenu
+setf c
+set iskeyword+=-
+set splitbelow
+set splitright
+set timeoutlen=300
+set undofile
+hi SignColumn guibg=#282c34
+
+let g:netrw_liststyle=4
+let mapleader=" "
+
+" air-line {{
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='dracula_pro'
+
+" separators: section = powerline, component = empty (matches lualine)
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_alt_sep = ''
+
+" section b: macro recording indicator (matches lualine_b)
+let g:airline_section_b = '%{reg_recording() != "" ? "󰑋 @" . reg_recording() : ""}'
+
+" section x: encoding, fileformat with unix symbol, filetype (matches lualine_x)
+let g:airline_section_x = '%{&fileformat == "unix" ? "" : &fileformat}  %{&filetype}'
+
+" section z: progress + location + clock (matches lualine_y/z)
+let g:airline_section_z = '%p%% %l:%c  %{strftime("%H:%M")}'
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" }}
+" NerdTree {{
+map <C-t> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+nnoremap <leader>ee :NERDTreeToggle<CR>
+nnoremap <leader>ef :NERDTreeFind<CR>
+nnoremap <leader>er :NERDTreeRefreshRoot<CR>
+" }}
+
+" java complete {{
+"autocmd FileType java setlocal omnifunc=javacomplete#Complete
+"let g:JavaComplete_EnableDefaultMappings = 1
+"nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+"imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+"nmap <F5> <Plug>(JavaComplete-Imports-Add)
+"imap <F5> <Plug>(JavaComplete-Imports-Add)
+"nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+"imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+"nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+"imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+" }}
+
+" neovim {{
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+" }}
+
+" Ale {{
+nnoremap <leader>l :ALELint<CR>
+let g:ale_sign_column_always=1
+let g:ale_sign_error='E>'
+let g:ale_sign_warning='W>'
+let g:ale_change_sign_column_color=0
+let g:ale_completion_enabled = 1
+let g:airline#extensions#ale#enabled = 1
+" }}
+
+" Gui Theme {{
+if has('gui_running')
+    set termguicolors
+    set background=dark
+    let g:enable_bold_font = 1
+    let g:enable_italic_font = 1
+    colorscheme onedark
+    " ayu options {{
+    "colorscheme ayu
+    "let ayucolor="mirage"
+    "let g:airline_theme='ayu'
+    " }}
+    " IndentLine {{
+    "let g:indentLine_setColors = 0
+    "let g:indentLine_showFirstIndentLevel = 0
+    "let g:indentLine_char = '┆'
+    "let g:indentLine_first_char = '┆'
+    "let g:indentLine_enabled = 0
+    " }}
+else
+    colorscheme default
+    " colorscheme onedark
+    " colorscheme onehalfdark
+    set background=dark
+    set cursorline
+    set t_Co=256
+    " let g:airline_theme='onehalfdark'
+    "hi CocInfoFloat guifg=#000000 guibg=#000022
+endif
+" }}
+"
+set termguicolors
+packadd! dracula_pro
+let g:dracula_colorterm = 0
+colorscheme dracula_pro
+
+" CtrlP {{
+nnoremap <leader>ff :CtrlP<CR>
+nnoremap <leader>fr :CtrlPMRU<CR>
+nnoremap <leader>fc :CtrlPLine<CR>
+" }}
+
+" Keymaps {{
+" Exit insert mode
+inoremap jk <ESC>
+
+" Clear search highlights
+nnoremap <leader>nh :nohl<CR>
+
+" Increment/decrement numbers
+nnoremap <leader>+ <C-a>
+nnoremap <leader>- <C-x>
+
+" Window splits
+nnoremap <leader>sv <C-w>v
+nnoremap <leader>sh <C-w>s
+nnoremap <leader>se <C-w>=
+nnoremap <leader>sx :close<CR>
+
+" Tab management
+nnoremap <leader>to :tabnew<CR>
+nnoremap <leader>tx :tabclose<CR>
+nnoremap <leader>tn :tabn<CR>
+nnoremap <leader>tp :tabp<CR>
+nnoremap <leader>tf :tabnew %<CR>
+
+" Clipboard
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+yy
+nnoremap <leader>p "+p
+vnoremap <leader>p "_dP
+" }}

@@ -5,3 +5,4 @@ fish/fish_variables
 fish/**/*.local.fish
 .claude
 .vscode
+.*~

@@ -15,4 +15,4 @@ repos:
       - id: detect-private-key
       - id: end-of-file-fixer
       - id: trailing-whitespace
-        exclude: "^fish/conf.d/*$"
+        exclude: "^fish/conf\\.d/.*\\.fish$"
