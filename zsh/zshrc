@@ -6,6 +6,7 @@
 # path {
 export PATH=/opt/homebrew/bin:$PATH
 export PATH="/Users/edison/.local/bin:$PATH"
+export PATH="/Users/edison/.cargo/bin:$PATH"
 export PATH="/Users/edison/.lmstudio/bin:$PATH"
 export PATH="/Users/edison/.antigravity/antigravity/bin:$PATH"
 # }

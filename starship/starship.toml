@@ -29,6 +29,7 @@ $line_break\
 $character"""
 
 palette = 'dracula'
+command_timeout = 2000
 
 [os]
 disabled = false

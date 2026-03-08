@@ -8,7 +8,8 @@ return {
 	---@type avante.Config
 	opts = {
 		instructions_file = "AGENTS.md",
-		provider = "openrouter",
+		-- provider = "openrouter",
+		provider = "lmstudio",
 		providers = {
 			openrouter = {
 				__inherited_from = "openai",
@@ -16,6 +17,12 @@ return {
 				api_key_name = "OPENROUTER_API_KEY",
 				-- model = "qwen/qwen3.5-35b-a3b",
 				model = "qwen/qwen3-coder-next",
+			},
+			lmstudio = {
+				__inherited_from = "openai",
+				api_key_name = "",
+				endpoint = "http://127.0.0.1:1234/v1",
+				model = "qwen/qwen3.5-35b-a3b",
 			},
 		},
 	},
