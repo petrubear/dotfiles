@@ -179,5 +179,6 @@
   "window.autoDetectColorScheme": true,
   "workbench.preferredDarkColorTheme": "Dracula Pro",
   "workbench.preferredLightColorTheme": "Dracula Pro (Alucard)",
-  "window.systemColorTheme": "auto"
+  "window.systemColorTheme": "auto",
+  "claudeCode.preferredLocation": "panel"
 }
