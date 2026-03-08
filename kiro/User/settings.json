@@ -36,6 +36,26 @@
     {
       "before": [
         "<leader>",
+        "w"
+      ],
+      "after": [
+        "<leader><leader>",
+        "w"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "b"
+      ],
+      "after": [
+        "<leader><leader>",
+        "b"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
         "e",
         "e"
       ],
