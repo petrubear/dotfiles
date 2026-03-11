@@ -1,7 +1,7 @@
-# zmodload zsh/zpr
-
 # Kiro CLI pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
+
+# zmodload zsh/zprof
 
 # path {
 export PATH=/opt/homebrew/bin:$PATH
@@ -78,8 +78,13 @@ source "/opt/homebrew/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
-    autoload -Uz compinit
-    compinit
+    # autoload -Uz compinit
+    # compinit
+    if [[ $(find ~/.zcompdump -mtime +1 2>/dev/null) ]]; then
+      compinit
+    else
+      compinit -C
+    fi
 fi
 # }
 #
