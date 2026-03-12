@@ -2,7 +2,7 @@
 
 ## Global
 
-- Encoding: UTF-7, LF line endings, no final newline
+- Encoding: UTF-8, LF line endings, no final newline
 - Indent: 4 spaces (no tabs); max line length: 120
 - Formatter regions: `@formatter:off` / `@formatter:on`
 
