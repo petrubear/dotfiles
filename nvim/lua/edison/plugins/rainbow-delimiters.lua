@@ -19,13 +19,11 @@ return {
 				lua = 210,
 			},
 			highlight = {
+				"DraculaCyan",
+				"DraculaGreen",
+				"DraculaOrange",
 				"DraculaPink",
 				"DraculaPurple",
-				"DraculaBlue",
-				"DraculaOrange",
-				"DraculaGreen",
-				"DraculaViolet",
-				"DraculaCyan",
 			},
 		}
 	end,

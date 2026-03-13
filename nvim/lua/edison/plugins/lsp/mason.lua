@@ -35,6 +35,7 @@ return {
 			ensure_installed = {
 				"black", -- python formatter
 				"eslint_d",
+				-- "google-java-format",
 				"isort", -- python formatter
 				"java-debug-adapter",
 				"java-test",
