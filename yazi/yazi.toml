@@ -1,8 +1,20 @@
 [mgr]
+ratio = [2, 3, 3]
 show_hidden = true
 sort_dir_first = true
 sort_by = "natural"
-linemode = "mtime"
+linemode = "size_and_mtime"
 show_symlink = true
+
 [flavor]
 use = "dracula"
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*"
+run = "git"
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*/"
+run = "git"

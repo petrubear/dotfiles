@@ -116,6 +116,7 @@ npx() {
 # }
 # Alias
 [[ -s "$HOME/.zsh_alias" ]] && source "$HOME/.zsh_alias"
+[[ -s "$HOME/.zsh_functions" ]] && source "$HOME/.zsh_functions"
 
 # Secrets
 [[ -s "$HOME/.zsh_secrets" ]] && source "$HOME/.zsh_secrets"
