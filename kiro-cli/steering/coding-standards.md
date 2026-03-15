@@ -1,3 +1,7 @@
+---
+inclusion: always
+---
+
 # Coding Standards
 
 ## Global

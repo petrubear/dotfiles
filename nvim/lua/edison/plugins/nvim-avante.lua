@@ -8,8 +8,8 @@ return {
 	---@type avante.Config
 	opts = {
 		instructions_file = "AGENTS.md",
-		-- provider = "openrouter",
-		provider = "lmstudio",
+		provider = "openrouter",
+		-- provider = "lmstudio",
 		providers = {
 			openrouter = {
 				__inherited_from = "openai",
