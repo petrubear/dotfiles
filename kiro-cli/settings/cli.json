@@ -8,6 +8,8 @@
   "autocomplete.theme": "dracula",
   "chat.defaultAgent": "petru_agent",
   "chat.defaultModel": "claude-sonnet-4.6",
+  "chat.diffTool": "delta",
+  "chat.editMode": "vim",
   "chat.enableCheckpoint": true,
   "chat.enableCodeIntelligence": true,
   "chat.enableKnowledge": true,
@@ -16,6 +18,7 @@
   "chat.enableTangentMode": true,
   "chat.enableThinking": false,
   "chat.enableTodoList": true,
+  "chat.ui": "tui",
   "codeWhisperer.shareCodeWhispererContentWithAWS": false,
   "inline.enabled": false,
   "knowledge.defaultExcludePatterns": [
@@ -36,6 +39,5 @@
   ],
   "knowledge.maxFiles": 3000,
   "mcp.loadedBefore": true,
-  "telemetry.enabled": false,
-  "chat.editMode": "vim"
+  "telemetry.enabled": false
 }
