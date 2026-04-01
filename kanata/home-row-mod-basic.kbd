@@ -1,21 +1,23 @@
-;; Basic home row mods example using QWERTY
-;; For a more complex but perhaps usable configuration,
-;; see home-row-mod-advanced.kbd
-
 (defcfg
   process-unmapped-keys yes
+  concurrent-tap-hold yes
 )
+
 (defsrc
-  a   s   d   f   j   k   l   ;
+  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  fn
+  caps a    s    d    f    j    k    l    ;
 )
+
 (defvar
-  ;; Note: consider using different time values for your different fingers.
-  ;; For example, your pinkies might be slower to release keys and index
-  ;; fingers faster.
   tap-time 200
   hold-time 250
 )
+
 (defalias
+  ;; --- Reincorporado: Caps Lock como Escape ---
+  cap (tap-hold $tap-time $hold-time esc esc)
+
+  ;; --- Home Row Mods Originales ---
   a (tap-hold $tap-time $hold-time a lmet)
   s (tap-hold $tap-time $hold-time s lalt)
   d (tap-hold $tap-time $hold-time d lctl)
@@ -23,8 +25,26 @@
   j (tap-hold $tap-time $hold-time j rsft)
   k (tap-hold $tap-time $hold-time k rctl)
   l (tap-hold $tap-time $hold-time l ralt)
-  ; (tap-hold $tap-time $hold-time ; rmet)
+  sem (tap-hold $tap-time $hold-time ; rmet)
+
+  ;; --- Lógica de Capas (Invertida para comportamiento Mac) ---
+  fnl (tap-hold 200 200 fn (layer-toggle f_keys))
+
+  ;; Accesos de macOS con combinaciones nativas
+  mc  C-up        ;; Mission Control
+  sls M-spc       ;; Spotlight Search
+  dtn S-C-A-M-f5  ;; Dictation
+  dnd S-C-A-M-f6  ;; Do Not Disturb
 )
+
 (deflayer base
-  @a  @s  @d  @f  @j  @k  @l  @;
+  ;; COMPORTAMIENTO MAC: Multimedia por defecto
+  🔅   🔆   @mc  @sls @dtn @dnd ◀◀   ▶⏸   ▶▶   🔇   🔉   🔊   @fnl
+  @cap @a   @s   @d   @f   @j   @k   @l   @sem
+)
+
+(deflayer f_keys
+  ;; Al presionar FN: Se activan las teclas F1-F12 estándar
+  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _
+  _    _    _    _    _    _    _    _    _
 )
