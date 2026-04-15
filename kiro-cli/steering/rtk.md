@@ -41,6 +41,7 @@ rtk gh run view <n>     # instead of: gh run view <n>
 ```
 rtk ls .                # instead of: ls
 rtk ls <path>           # instead of: ls <path>
+rtk tree <path>         # instead of: tree <path>
 rtk find "<pattern>" .  # instead of: find . -name "<pattern>"
 rtk grep "pattern" .    # instead of: grep -r "pattern" .
 rtk read <file>         # instead of: cat <file>
@@ -55,6 +56,7 @@ rtk diff <file1> <file2>       # instead of: diff <file1> <file2>
 rtk npm install         # instead of: npm install
 rtk npm test            # instead of: npm test
 rtk npm run <script>    # instead of: npm run <script>
+rtk npx <cmd>           # instead of: npx (routes tsc/eslint/prisma to specialized filters)
 rtk pnpm install        # instead of: pnpm install
 rtk pnpm list           # instead of: pnpm list
 rtk pnpm test           # instead of: pnpm test
@@ -69,6 +71,7 @@ rtk next build          # instead of: next build
 rtk lint                # instead of: eslint / biome / etc.
 rtk lint biome          # explicitly target biome
 rtk prettier --check .  # instead of: prettier --check .
+rtk format              # universal format checker (prettier, black, ruff format)
 ```
 
 ## Testing
@@ -94,6 +97,34 @@ rtk cargo clippy        # instead of: cargo clippy
 rtk pytest              # instead of: pytest (failures only)
 rtk python lint         # instead of: ruff / flake8 / etc.
 rtk python format       # instead of: black / ruff format
+rtk ruff check .        # instead of: ruff check .
+rtk mypy .              # instead of: mypy (errors grouped by file)
+rtk pip install <pkg>   # instead of: pip install (auto-detects uv)
+```
+
+## Ruby / Rails
+
+```
+rtk rspec               # instead of: rspec (compact output)
+rtk rubocop             # instead of: rubocop (compact violations)
+rtk rake test           # instead of: rake test (compact Minitest output)
+```
+
+## Go
+
+```
+rtk go build            # instead of: go build
+rtk go test             # instead of: go test
+rtk golangci-lint run   # instead of: golangci-lint run
+```
+
+## .NET
+
+```
+rtk dotnet build        # instead of: dotnet build
+rtk dotnet test         # instead of: dotnet test
+rtk dotnet restore      # instead of: dotnet restore
+rtk dotnet format       # instead of: dotnet format
 ```
 
 ## Docker / Kubernetes
@@ -106,12 +137,41 @@ rtk kubectl get pods    # instead of: kubectl get pods
 rtk kubectl get <resource>
 ```
 
-## Prisma
+## AWS
 
 ```
+rtk aws <cmd>           # instead of: aws (forces JSON, compresses output)
+```
+
+## Database
+
+```
+rtk psql <args>         # instead of: psql (strips borders, compresses tables)
 rtk prisma generate     # instead of: prisma generate
 rtk prisma migrate dev --name <name>
 rtk prisma db push      # instead of: prisma db push
+```
+
+## Network
+
+```
+rtk curl <url>          # instead of: curl (auto JSON detection + schema output)
+rtk wget <url>          # instead of: wget (strips progress bars)
+```
+
+## Graphite
+
+```
+rtk gt <cmd>            # instead of: gt (stacked PR commands)
+```
+
+## Logs & Output Filtering
+
+```
+rtk log <file>          # filter and deduplicate log output
+rtk err <cmd>           # run command and show only errors/warnings
+rtk summary <cmd>       # run command and show heuristic summary
+rtk json <file>         # show JSON compact; --schema for schema-only
 ```
 
 ## RTK Meta Commands
@@ -121,7 +181,15 @@ rtk gain                # show total token savings stats
 rtk gain --graph        # savings over time (ASCII graph)
 rtk gain --history      # per-command history
 rtk smart <file>        # 2-line heuristic summary of a code file
+rtk deps                # summarize project dependencies
+rtk env                 # show env vars (filtered, sensitive masked)
 rtk proxy <any-cmd>     # passthrough with tracking but no compression
+rtk discover            # discover missed RTK savings from history
+rtk session             # show RTK adoption across sessions
+rtk learn               # learn CLI corrections from error history
+rtk cc-economics        # spending (ccusage) vs savings (rtk) analysis
+rtk rewrite <cmd>       # rewrite a raw command to its RTK equivalent
+rtk config              # show or create configuration file
 ```
 
 ---
