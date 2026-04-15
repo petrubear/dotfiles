@@ -7,16 +7,16 @@ function module.apply_to_config(config)
 	config.llm = {
 		enabled = true, -- Set to true to enable AI features
 
-		-- provider = "openrouter", -- "openrouter" | "ollama" | "lmstudio"
-		-- model = "openrouter/auto:free", -- Free-tier routing for initial testing
-		-- api_key = os.getenv("OPENROUTER_API_KEY"), -- Or paste key directly (not recommended)
-		-- base_url = nil, -- nil = use provider default
+		provider = "openrouter",
+		model = "openrouter/auto:free",
+		api_key = os.getenv("OPENROUTER_API_KEY"),
+		base_url = nil, -- nil = use provider default
 
 		-- Local provider examples:
+		-- provider = "lmstudio",
+		-- base_url = "http://localhost:1234/v1",
+		-- model = "qwen/qwen3.5-9b",
 		-- provider = "ollama",   base_url = "http://localhost:11434",  model = "llama3"
-		provider = "lmstudio",
-		base_url = "http://localhost:1234/v1",
-		model = "qwen/qwen3.5-9b",
 
 		features = {
 			nl_to_command = true, -- Natural language → shell command

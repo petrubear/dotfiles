@@ -7,8 +7,13 @@ local module = {}
 function module.apply_to_config(config)
 	-- Font
 	-- config.font = petruterm.font("JetBrainsMono Nerd Font Mono") -- Override with "Monolisa Nerd Font" if installed
-	config.font = petruterm.font("MonoLisa Nerd Font")
+	config.font = petruterm.font("Monolisa Nerd Font")
 	config.font_size = 16
+	config.font_line_height = 1.4
+
+	-- LCD subpixel antialiasing (FreeType LCD mode, 3× horizontal resolution)
+	-- Significantly sharper text on LCD displays; JetBrainsMono Nerd Font recommended for best results
+	config.lcd_antialiasing = true
 
 	-- HarfBuzz OpenType features: contextual alternates, ligatures, discretionary ligatures
 	config.font_features = { "calt=1", "liga=1", "dlig=1" }
@@ -42,6 +47,15 @@ function module.apply_to_config(config)
 
 	config.enable_tab_bar = true
 	config.hide_tab_bar_if_one = true
+
+	-- ── Status bar ───────────────────────────────────────────────────────────
+	-- style: "plain"     — text separators ( › and │ ).
+	--        "powerline" — Nerd Font arrows ( and ). Requires a Nerd Font.
+	config.status_bar = {
+		enabled = true,
+		position = "bottom",
+		style = "powerline",
+	}
 end
 
 return module
