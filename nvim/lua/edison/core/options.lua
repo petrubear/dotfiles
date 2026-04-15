@@ -42,7 +42,8 @@ opt.backup = false
 opt.writebackup = false
 opt.swapfile = false
 opt.hidden = true
-opt.confirm = true
+opt.confirm = false
+opt.backupcopy = "yes"
 
 -- backspace
 opt.backspace = "indent,eol,start"

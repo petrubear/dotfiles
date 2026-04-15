@@ -1,46 +1,37 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	branch = "main",
-	event = { "BufReadPre", "BufNewFile" },
 	build = ":TSUpdate",
 	config = function()
-		-- The new 'main' branch doesn't use require("nvim-treesitter.configs").setup()
-		-- Highlighting is enabled by default in the new version.
+		local ts = require("nvim-treesitter")
 
-		-- If you need to manually add languages to 'ensure_installed',
-		-- you now use the global variable or the new API:
-		require("nvim-treesitter").setup({
-			-- NOTE: If 'require("nvim-treesitter").setup' also fails,
-			-- it means the rewrite is even further along.
-			-- Try just the registration below first.
-			highlight = { enable = true },
-			indent = { enable = true },
-			ensure_installed = {
-				"bash",
-				"css",
-				"dockerfile",
-				"gitignore",
-				"graphql",
-				"html",
-				"java",
-				"javascript",
-				"json",
-				"kotlin",
-				"lua",
-				"markdown",
-				"markdown_inline",
-				"prisma",
-				"python",
-				"query",
-				"tsx",
-				"typescript",
-				"vim",
-				"vimdoc",
-				"yaml",
-			},
+		-- In the 'main' rewrite, highlighting is handled by Neovim core.
+		-- We just need to ensure the parsers are installed.
+		ts.install({
+			"bash",
+			"java",
+			"lua",
+			"markdown",
+			"markdown_inline",
+			"query",
+			"vim",
+			"vimdoc",
+			"yaml",
+			-- add others as needed
 		})
 
-		-- Use the modern Neovim API for zsh
+		-- This replaces the old 'highlight = { enable = true }'
+		-- It tells Neovim to use treesitter for all supported files
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function()
+				local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
+				if lang then
+					pcall(vim.treesitter.start)
+				end
+			end,
+		})
+
+		-- Register zsh to use the bash parser
 		vim.treesitter.language.register("bash", "zsh")
 	end,
 }
