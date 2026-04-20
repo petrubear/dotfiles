@@ -78,6 +78,7 @@ rtk format              # universal format checker (prettier, black, ruff format
 
 ```
 rtk vitest run          # instead of: vitest run
+rtk jest                # instead of: jest (compact output)
 rtk playwright test     # instead of: playwright test
 ```
 
@@ -95,8 +96,6 @@ rtk cargo clippy        # instead of: cargo clippy
 
 ```
 rtk pytest              # instead of: pytest (failures only)
-rtk python lint         # instead of: ruff / flake8 / etc.
-rtk python format       # instead of: black / ruff format
 rtk ruff check .        # instead of: ruff check .
 rtk mypy .              # instead of: mypy (errors grouped by file)
 rtk pip install <pkg>   # instead of: pip install (auto-detects uv)
@@ -172,6 +171,7 @@ rtk log <file>          # filter and deduplicate log output
 rtk err <cmd>           # run command and show only errors/warnings
 rtk summary <cmd>       # run command and show heuristic summary
 rtk json <file>         # show JSON compact; --schema for schema-only
+rtk pipe                # read stdin, apply filter, print filtered output (Unix pipe mode)
 ```
 
 ## RTK Meta Commands
@@ -184,12 +184,17 @@ rtk smart <file>        # 2-line heuristic summary of a code file
 rtk deps                # summarize project dependencies
 rtk env                 # show env vars (filtered, sensitive masked)
 rtk proxy <any-cmd>     # passthrough with tracking but no compression
+rtk run <cmd>           # execute via sh -c (raw, no filtering or tracking)
 rtk discover            # discover missed RTK savings from history
 rtk session             # show RTK adoption across sessions
 rtk learn               # learn CLI corrections from error history
 rtk cc-economics        # spending (ccusage) vs savings (rtk) analysis
 rtk rewrite <cmd>       # rewrite a raw command to its RTK equivalent
 rtk config              # show or create configuration file
+rtk telemetry           # manage telemetry consent (GDPR)
+rtk trust               # trust project-local TOML filters in current directory
+rtk untrust             # revoke trust for project-local TOML filters
+rtk verify              # verify hook integrity and run TOML filter inline tests
 ```
 
 ---
