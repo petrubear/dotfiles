@@ -13,7 +13,7 @@
   "chat.enableCheckpoint": true,
   "chat.enableCodeIntelligence": true,
   "chat.enableKnowledge": true,
-  "chat.enableNotifications": false,
+  "chat.enableNotifications": true,
   "chat.enableSubagent": true,
   "chat.enableTangentMode": true,
   "chat.enableThinking": false,
