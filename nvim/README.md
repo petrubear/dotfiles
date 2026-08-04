@@ -6,7 +6,7 @@ Primary editor configuration using Lazy.nvim as the plugin manager. Leader key i
 
 - `neovim` (install via `brew install neovim`)
 - Dracula Pro theme must be manually installed to `~/.local/share/nvim/site/pack/themes/start/dracula_pro`
-- A Nerd Font (Monolisa Nerd Font recommended)
+- A Nerd Font (MonolisaCode Nerd Font recommended)
 - `ripgrep` for Telescope live grep (`brew install ripgrep`)
 - `make` for telescope-fzf-native and LuaSnip jsregexp builds
 

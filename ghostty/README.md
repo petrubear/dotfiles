@@ -1,11 +1,11 @@
 # Ghostty
 
-Primary terminal emulator configuration. Uses Dracula Pro theme and Monolisa Nerd Font.
+Primary terminal emulator configuration. Uses Dracula Pro theme and MonolisaCode Nerd Font.
 
 ## Dependencies
 
 - Ghostty (`brew install --cask ghostty`)
-- Monolisa Nerd Font (paid font, must be installed manually)
+- MonolisaCode Nerd Font (paid font, must be installed manually)
 - Dracula Pro theme file at `themes/pro` (paid theme)
 
 ## Settings
@@ -13,7 +13,7 @@ Primary terminal emulator configuration. Uses Dracula Pro theme and Monolisa Ner
 | Setting | Value |
 |---------|-------|
 | Theme | Dracula Pro (loaded from `themes/pro`) |
-| Font family | Monolisa Nerd Font |
+| Font family | MonolisaCode Nerd Font |
 | Font size | 16 |
 | Font style | Medium (regular), Bold, Medium Italic, Bold Italic |
 | Font features | `+calt`, `+liga`, `+dlig` (ligatures enabled) |

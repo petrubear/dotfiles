@@ -7,7 +7,7 @@ Zed editor configuration with Vim mode, Dracula Pro theme, and Neovim-style keyb
 - [Zed](https://zed.dev/) -- the editor itself
 - [Dracula Pro theme](https://draculatheme.com/pro) -- paid color theme (custom theme file at `themes/dracula_pro.json`)
 - [Material Icon Theme](https://zed.dev/extensions/material-icon-theme) -- file/folder icons
-- [Monolisa font](https://www.monolisa.dev/) -- buffer font (15px); MonoLisa Nerd Font for terminal (14px)
+- [MonolisaCode font](https://www.monolisa.dev/) -- buffer font (15px); MonoLisa Nerd Font for terminal (14px)
 
 ## Editor Settings
 

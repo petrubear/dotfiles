@@ -5,7 +5,7 @@ Cross-shell prompt configuration with a custom Dracula color palette and Powerli
 ## Dependencies
 
 - `starship` (`brew install starship`)
-- A Nerd Font for icons (Monolisa Nerd Font recommended)
+- A Nerd Font for icons (MonolisaCode Nerd Font recommended)
 
 ## Segment Order
 

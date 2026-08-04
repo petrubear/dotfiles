@@ -8,12 +8,12 @@ Antigravity editor configuration. Shares a nearly identical setup with the VSCod
 - [Vim extension](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) -- Vim keybindings
 - [Dracula Pro theme](https://draculatheme.com/pro) -- paid color theme
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) -- file/folder icons
-- [Monolisa font](https://www.monolisa.dev/) -- editor font (15px); Monolisa Nerd Font for terminal (14px)
+- [MonolisaCode font](https://www.monolisa.dev/) -- editor font (15px); MonolisaCode Nerd Font for terminal (14px)
 
 ## Editor Settings
 
-- **Font**: Monolisa, 15px, with ligatures and font variations enabled
-- **Terminal font**: Monolisa Nerd Font, 14px, with ligatures
+- **Font**: MonolisaCode, 15px, with ligatures and font variations enabled
+- **Terminal font**: MonolisaCode Nerd Font, 14px, with ligatures
 - **Line numbers**: Relative
 - **Line height**: 20
 - **Minimap**: Disabled

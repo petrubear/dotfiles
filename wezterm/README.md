@@ -5,7 +5,7 @@ Alternative terminal emulator with a modular Lua configuration. The entry point 
 ## Dependencies
 
 - WezTerm (https://wezfurlong.org/wezterm/)
-- Monolisa Nerd Font (paid font, must be installed manually)
+- MonolisaCode Nerd Font (paid font, must be installed manually)
 - A `colors.lua` module providing the Dracula Pro color palette (not included in this repo)
 
 ## Structure
@@ -27,7 +27,7 @@ Each module exports `{ apply_to_config = function(config) ... end }`. The entry 
 | Setting | Value |
 |---------|-------|
 | Color scheme | Dracula Pro |
-| Font | Monolisa Nerd Font, 16px |
+| Font | MonolisaCode Nerd Font, 16px |
 | Font features | `calt=1`, `liga=1`, `dlig=1` (ligatures) |
 | Tab bar | Hidden when only one tab |
 | Window decorations | Resize only (no titlebar) |

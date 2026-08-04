@@ -3,7 +3,7 @@
 config-file = themes/pro
 
 # Font (use what you have installed)
-font-family = "Monolisa Nerd Font"
+font-family = "MonolisaCode Nerd Font"
 font-feature = +calt
 font-feature = +liga
 font-feature = +dlig

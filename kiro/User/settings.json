@@ -18,7 +18,7 @@
   "telemetry.dataSharingAndPromptLogging.contentCollectionForServiceImprovement": false,
   "telemetry.dataSharingAndPromptLogging.usageAnalyticsAndPerformanceMetrics": false,
   "telemetry.feedback.enabled": false,
-  "terminal.integrated.fontFamily": "'Monolisa Nerd Font', 'Jetbrains Mono', Menlo",
+  "terminal.integrated.fontFamily": "'MonolisaCode Nerd Font', 'Jetbrains Mono', Menlo",
   "terminal.integrated.fontLigatures.enabled": true,
   "terminal.integrated.fontSize": 14,
   "vim.commandLineModeKeyBindings": [],

@@ -6,8 +6,8 @@ local module = {}
 
 function module.apply_to_config(config)
 	-- Font
-	-- config.font = petruterm.font("JetBrainsMono Nerd Font Mono") -- Override with "Monolisa Nerd Font" if installed
-	config.font = petruterm.font("Monolisa Nerd Font")
+	-- config.font = petruterm.font("JetBrainsMono Nerd Font Mono") -- Override with "MonolisaCode Nerd Font" if installed
+	config.font = petruterm.font("MonolisaCode Nerd Font")
 	config.font_size = 16
 	config.font_line_height = 1.4
 

@@ -107,7 +107,7 @@ dotfiles/
 │       └── soul.md             # Agent personality/behavior guidelines
 ├── vscode/
 │   └── User/
-│       └── settings.json     # VS Code settings (Vim plugin, Dracula Pro, Monolisa font)
+│       └── settings.json     # VS Code settings (Vim plugin, Dracula Pro, MonolisaCode font)
 ├── antigravity/
 │   └── User/
 │       └── settings.json     # Antigravity editor settings (mirrors VS Code config)
@@ -168,7 +168,7 @@ dotfiles/
 ## Ghostty — Primary Terminal Emulator
 
 - **Theme**: Dracula Pro (loaded from external file `themes/pro`)
-- **Font**: Monolisa Nerd Font, 16px, Medium weight, with ligatures enabled (`+calt`, `+liga`, `+dlig`)
+- **Font**: MonolisaCode Nerd Font, 16px, Medium weight, with ligatures enabled (`+calt`, `+liga`, `+dlig`)
 - **Window**: Maximized on launch, hidden titlebar (`macos-titlebar-style = hidden`), 10px padding on all sides, no window state save
 - **Shell integration**: Detects shell automatically, enables cursor/sudo/title features
 - **Behavior**: Quit after last window closed, no close confirmation, block cursor with blinking, copy-on-select disabled
@@ -263,7 +263,7 @@ dotfiles/
 
 ## Kiro — AI IDE (AWS)
 
-- **IDE settings** (`kiro/User/settings.json`): Editor settings — Monolisa font, relative line numbers, Dracula Pro theme, Vim plugin config, telemetry disabled, `kiroAgent.agentAutonomy: Supervised`, trusted Maven commands
+- **IDE settings** (`kiro/User/settings.json`): Editor settings — MonolisaCode font, relative line numbers, Dracula Pro theme, Vim plugin config, telemetry disabled, `kiroAgent.agentAutonomy: Supervised`, trusted Maven commands
 - **CLI settings** (`kiro-cli/settings/cli.json`): Model `claude-sonnet-4.6`, Dracula autocomplete theme, autocomplete disabled, subagent/checkpoint/tangent mode enabled, telemetry disabled
 - **Agents** (8 custom in `kiro-cli/agents/`): `context7`, `jasper` (JasperReports helper), `jira`, `logs`, `oracle`, `petru` (general-purpose), `test`, `webdev`
   - Each agent JSON defines allowed tools, MCP servers, resources, and model
@@ -278,7 +278,7 @@ dotfiles/
 - **Vim plugin**: `vim.leader = "<space>"`, easymotion enabled, highlighted yank, `useSystemClipboard`
 - **Keymaps**: `<leader>ee` (toggle sidebar), `<leader>ef` (show file in explorer), `<leader>er` (refresh explorer), `<leader>zz` (zen mode), `Ctrl-h/j/k/l` (focus pane navigation)
 - **Theme**: Dracula Pro; icon theme: `material-icon-theme`
-- **Font**: Monolisa, 15px, with ligatures; terminal uses Monolisa Nerd Font 14px
+- **Font**: MonolisaCode, 15px, with ligatures; terminal uses MonolisaCode Nerd Font 14px
 - **Telemetry**: Fully disabled; GitHub Copilot disabled globally
 - **Code Runner**: Configured executor map for 40+ languages
 
@@ -320,7 +320,7 @@ dotfiles/
 | Convention | Details |
 |---|---|
 | **Theme** | Dracula everywhere — Ghostty, Starship, WezTerm, Neovim, Zellij, OpenCode, bat, btop, lazygit, Yazi, Kiro autocomplete, VSCode, Antigravity. Tmux is the exception (Catppuccin Mocha) |
-| **Font** | Monolisa Nerd Font, 16px, across all terminal emulators; Monolisa (non-Nerd) at 15px in editor GUIs |
+| **Font** | MonolisaCode Nerd Font, 16px, across all terminal emulators; MonolisaCode (non-Nerd) at 15px in editor GUIs |
 | **Vi mode** | Enabled in zsh, tmux, Neovim, zellij, starship prompt indicators, IdeaVim, VSCode (Vim plugin), and Antigravity (Vim plugin) |
 | **Prefix/Leader** | `Ctrl-a` in tmux and WezTerm; `Space` in Neovim, IdeaVim, VSCode, Antigravity; `Ctrl-b` in zellij tmux-compat mode |
 | **Indentation** | 2 spaces universally (4 spaces per Kiro coding standards for Java/Kotlin/TS projects) |

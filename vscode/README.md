@@ -9,7 +9,7 @@ Visual Studio Code editor configuration with Vim keybindings, Dracula Pro theme,
 - [Dracula Pro theme](https://draculatheme.com/pro) -- paid theme (`workbench.colorTheme`)
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) -- file icon theme
 - [Code Runner](https://marketplace.visualstudio.com/items?itemName=formulahpp.vscode-code-runner) -- run code snippets in 40+ languages
-- [Monolisa font](https://www.monolisa.dev/) -- editor font (15px); Monolisa Nerd Font for terminal (14px)
+- [MonolisaCode font](https://www.monolisa.dev/) -- editor font (15px); MonolisaCode Nerd Font for terminal (14px)
 
 ## Extensions Referenced
 
@@ -23,8 +23,8 @@ Visual Studio Code editor configuration with Vim keybindings, Dracula Pro theme,
 
 ## Editor Settings
 
-- **Font**: Monolisa, 15px, with ligatures and font variations enabled
-- **Terminal font**: Monolisa Nerd Font, 14px, with ligatures
+- **Font**: MonolisaCode, 15px, with ligatures and font variations enabled
+- **Terminal font**: MonolisaCode Nerd Font, 14px, with ligatures
 - **Line numbers**: Relative
 - **Minimap**: Disabled
 - **Activity bar**: Top position
