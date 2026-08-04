@@ -13,11 +13,15 @@ return {
 			"lua",
 			"markdown",
 			"markdown_inline",
+			"python",
 			"query",
 			"vim",
 			"vimdoc",
 			"yaml",
-			-- add others as needed
+			"javascript",
+			"typescript",
+			"json",
+			"jsonc",
 		})
 
 		-- This replaces the old 'highlight = { enable = true }'

@@ -6,24 +6,31 @@
 -- System keybinds that remain hardcoded (not configurable here):
 --   Cmd+C / Cmd+V   — copy / paste (clipboard)
 --   Cmd+Q           — quit
+--   Cmd+K           — clear screen and scrollback
+--   Cmd+F           — open / close text search (Enter=next, Shift+Enter=prev, Esc=close)
 --   Cmd+1-9         — switch to tab N
+--   Ctrl+Space      — toggle inline AI block
+--   F12             — toggle debug HUD
 
 local petruterm = require("petruterm")
 local module    = {}
 
 function module.apply_to_config(config)
-  config.leader = { key = "f", mods = "CTRL", timeout_ms = 1000 }
+  config.leader   = { key = "f", mods = "CTRL", timeout_ms = 1000 }
+  config.keyboard = { option_as_meta = false }
 
   config.keys = {
     -- ── Overlays ──────────────────────────────────────────────────────────
     { mods = "LEADER", key = "o",  action = petruterm.action.CommandPalette },
 
-    -- ── AI panel (open → focus → close cycle) ─────────────────────────────
-    { mods = "LEADER", key = "a",  action = petruterm.action.ToggleAiPanel },
-
-    -- ── AI context actions ─────────────────────────────────────────────────
-    { mods = "LEADER", key = "e",  action = petruterm.action.ExplainLastOutput },
-    { mods = "LEADER", key = "f",  action = petruterm.action.FixLastError },
+    -- ── AI controls ────────────────────────────────────────────────────────
+    -- leader+A   : focus AI panel / return focus to terminal
+    { mods = "LEADER", key = "A",  action = petruterm.action.FocusAiPanel },
+    -- leader+a+a : toggle AI panel open / close
+    -- leader+a+e : Explain last output
+    -- leader+a+f : Fix last error
+    -- leader+a+z : Undo last write
+    -- (These are handled as hardcoded sub-leader sequences, not config entries.)
 
     -- ── Tabs (tmux-style) ─────────────────────────────────────────────────
     { mods = "LEADER", key = "c",  action = petruterm.action.NewTab },

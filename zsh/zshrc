@@ -12,8 +12,6 @@ export PATH="/Users/edison/.lmstudio/bin:$PATH"
 export PATH="/Users/edison/.antigravity/antigravity/bin:$PATH"
 # }
 # exports {
-export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=true
-export CLAUDE_TELEMETRY_ENABLED=false
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export EDITOR=nvim
 export FCEDIT=nvim
@@ -129,3 +127,9 @@ npx() {
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+
+# Added by Antigravity
+export PATH="/Users/edison/.antigravity/antigravity/bin:$PATH"
+
+# Added by Antigravity IDE
+export PATH="/Users/edison/.antigravity-ide/antigravity-ide/bin:$PATH"

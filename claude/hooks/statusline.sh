@@ -14,7 +14,9 @@ ctx_remaining=$(echo "$input" | jq -r '.context_window.remaining_percentage // e
 
 # Usage: 5-hour rate limit (Pro/Max) or cost fallback
 usage_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
+usage_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
 weekly_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
+weekly_resets=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty')
 cost=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
 
 # --- Git info ---
@@ -66,13 +68,39 @@ if [ -n "$ctx_used" ]; then
   ctx_display=$(printf " \033[2mctx\033[0m %s \033[2m%s%%\033[0m" "$ctx_bar" "$ctx_pct")
 fi
 
+# --- Format reset time from Unix epoch ---
+# Returns: "resets in 3h 20m", "resets in 45m", or "resets Monday 7am"
+format_reset() {
+  local epoch="$1"
+  [ -z "$epoch" ] && return
+  local now diff hours mins
+  now=$(date +%s)
+  diff=$(( epoch - now ))
+  [ "$diff" -le 0 ] && return
+  hours=$(( diff / 3600 ))
+  mins=$(( (diff % 3600) / 60 ))
+  if [ "$hours" -ge 24 ]; then
+    local day hour_fmt
+    day=$(date -r "$epoch" +"%A" 2>/dev/null)
+    hour_fmt=$(date -r "$epoch" +"%-I%p" 2>/dev/null | tr '[:upper:]' '[:lower:]')
+    printf "resets %s %s" "$day" "$hour_fmt"
+  elif [ "$hours" -gt 0 ]; then
+    printf "resets in %dh %dm" "$hours" "$mins"
+  else
+    printf "resets in %dm" "$mins"
+  fi
+}
+
 # --- Build usage bar (5-hour) ---
 usage_display=""
 if [ -n "$usage_pct" ]; then
   use_pct=${usage_pct%.*}
   use_pct=${use_pct:-0}
   use_bar=$(render_bar "$use_pct" 10)
-  usage_display=$(printf " \033[2muse\033[0m %s \033[2m%s%%\033[0m" "$use_bar" "$use_pct")
+  use_reset=$(format_reset "$usage_resets")
+  use_reset_str=""
+  [ -n "$use_reset" ] && use_reset_str=$(printf " \033[2m(%s)\033[0m" "$use_reset")
+  usage_display=$(printf " \033[2muse\033[0m %s \033[2m%s%%\033[0m%s" "$use_bar" "$use_pct" "$use_reset_str")
 elif [ -n "$cost" ] && [ "$cost" != "0" ]; then
   usage_display=$(printf " \033[2m$\033[0m\033[33m%s\033[0m" "$cost")
 fi
@@ -83,7 +111,10 @@ if [ -n "$weekly_pct" ]; then
   wk_pct=${weekly_pct%.*}
   wk_pct=${wk_pct:-0}
   wk_bar=$(render_bar "$wk_pct" 10)
-  weekly_display=$(printf " \033[2mweek\033[0m %s \033[2m%s%%\033[0m" "$wk_bar" "$wk_pct")
+  wk_reset=$(format_reset "$weekly_resets")
+  wk_reset_str=""
+  [ -n "$wk_reset" ] && wk_reset_str=$(printf " \033[2m(%s)\033[0m" "$wk_reset")
+  weekly_display=$(printf " \033[2mweek\033[0m %s \033[2m%s%%\033[0m%s" "$wk_bar" "$wk_pct" "$wk_reset_str")
 fi
 
 # --- Output ---

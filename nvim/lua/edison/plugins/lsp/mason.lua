@@ -10,6 +10,7 @@ return {
 				"lua_ls",
 				"marksman",
 				"pyright",
+				"ts_ls",
 				"yamlls",
 			},
 		},

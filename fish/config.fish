@@ -6,3 +6,7 @@ zoxide init fish | source
 starship init fish | source
 
 source ~/.config/fish/aliases.fish
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/Users/edison/.local/bin" $PATH

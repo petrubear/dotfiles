@@ -5,6 +5,10 @@ return {
 		local lint = require("lint")
 
 		lint.linters_by_ft = {
+			javascript = { "eslint_d" },
+			javascriptreact = { "eslint_d" },
+			typescript = { "eslint_d" },
+			typescriptreact = { "eslint_d" },
 			python = { "pylint" },
 		}
 
@@ -42,6 +46,13 @@ return {
 			end
 		end
 
+		local function venv_executable(name)
+			return vim.fs.find(".venv/bin/" .. name, {
+				upward = true,
+				path = vim.fs.dirname(vim.api.nvim_buf_get_name(0)),
+			})[1]
+		end
+
 		local function try_linting()
 			local linters = lint.linters_by_ft[vim.bo.filetype]
 
@@ -49,6 +60,12 @@ return {
 			--   -- remove_linter_if_missing_config_file(linters, "eslint_d", ".eslintrc.cjs")
 			--   remove_linter_if_missing_config_file(linters, "eslint_d", "eslint.config.js")
 			-- end
+
+			if vim.bo.filetype == "python" then
+				-- prefer the project's own venv pylint (can see project deps) over
+				-- the Mason-installed one (isolated env, always PATH-first)
+				lint.linters.pylint.cmd = venv_executable("pylint") or "pylint"
+			end
 
 			lint.try_lint(linters)
 		end

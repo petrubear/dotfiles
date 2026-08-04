@@ -7,7 +7,7 @@ local module = {}
 function module.apply_to_config(config)
 	-- Font
 	-- config.font = petruterm.font("JetBrainsMono Nerd Font Mono") -- Override with "Monolisa Nerd Font" if installed
-	config.font = petruterm.font("MonolisaCode Nerd Font")
+	config.font = petruterm.font("Monolisa Nerd Font")
 	config.font_size = 16
 	config.font_line_height = 1.4
 
@@ -40,13 +40,13 @@ function module.apply_to_config(config)
 		-- ui_success:        positive indicators.             Default: ansi[3] (green).
 		-- ui_overlay:        toast / modal semi-transparent.  Default: background at 95% alpha.
 		--   Supports 6-char (#rrggbb) or 8-char (#rrggbbaa) hex values.
-		ui_accent = "#9580ff",
-		ui_surface = "#1a1a1e",
+		ui_accent         = "#9580ff",
+		ui_surface        = "#1a1a1e",
 		ui_surface_active = "#2a2a3a",
-		ui_surface_hover = "#181820",
-		ui_muted = "#e0e0e859",
-		ui_success = "#8aff80",
-		ui_overlay = "#1a1a1eff",
+		ui_surface_hover  = "#181820",
+		ui_muted          = "#e0e0e859",
+		ui_success        = "#8aff80",
+		ui_overlay        = "#1a1a1eff",
 	}
 
 	-- Window

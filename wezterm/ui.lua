@@ -5,7 +5,7 @@ local module = {}
 function module.apply_to_config(config)
 	config.colors = colors["Dracula Pro"]
 	config.enable_tab_bar = false
-	config.font = wezterm.font("Monolisa Nerd Font")
+	config.font = wezterm.font("MonolisaCode Nerd Font")
 	-- config.font_rules = { { intensity = "Normal", font = wezterm.font("Monolisa Nerd Font", { weight = "Medium" }) } }
 	config.font_size = 16
 	config.harfbuzz_features = { "calt=1", "liga=1", "dlig=1" }

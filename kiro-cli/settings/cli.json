@@ -1,5 +1,5 @@
 {
-  "app.disableAutoupdates": false,
+  "app.disableAutoupdates": true,
   "app.hideMenubarIcon": false,
   "app.launchOnStartup": true,
   "autocomplete.disable": true,
@@ -13,7 +13,7 @@
   "chat.enableCheckpoint": true,
   "chat.enableCodeIntelligence": true,
   "chat.enableKnowledge": true,
-  "chat.enableNotifications": true,
+  "chat.enableNotifications": false,
   "chat.enableSubagent": true,
   "chat.enableTangentMode": true,
   "chat.enableThinking": false,

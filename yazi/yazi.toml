@@ -8,13 +8,3 @@ show_symlink = true
 
 [flavor]
 use = "dracula"
-
-[[plugin.prepend_fetchers]]
-id  = "git"
-url = "*"
-run = "git"
-
-[[plugin.prepend_fetchers]]
-id  = "git"
-url = "*/"
-run = "git"

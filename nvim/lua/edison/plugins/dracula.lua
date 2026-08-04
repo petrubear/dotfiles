@@ -15,5 +15,9 @@ return {
 		-- Dracula Pro doesn't define @lsp.mod.deprecated, so deprecated symbols
 		-- (methods, classes) have no visual indication. Add strikethrough.
 		vim.api.nvim_set_hl(0, "@lsp.mod.deprecated", { strikethrough = true })
+		-- Dracula Pro keeps Keyword/Comment upright by default; italicize them.
+		vim.api.nvim_set_hl(0, "Keyword", { link = "DraculaPinkItalic" })
+		vim.api.nvim_set_hl(0, "@keyword", { link = "DraculaPinkItalic" })
+		vim.api.nvim_set_hl(0, "Comment", { link = "DraculaCyanItalic" })
 	end,
 }
