@@ -7,15 +7,15 @@ Zed editor configuration with Vim mode, Dracula Pro theme, and Neovim-style keyb
 - [Zed](https://zed.dev/) -- the editor itself
 - [Dracula Pro theme](https://draculatheme.com/pro) -- paid color theme (custom theme file at `themes/dracula_pro.json`)
 - [Material Icon Theme](https://zed.dev/extensions/material-icon-theme) -- file/folder icons
-- [MonolisaCode font](https://www.monolisa.dev/) -- buffer font (15px); MonoLisa Nerd Font for terminal (14px)
+- [MonolisaCode font](https://www.monolisa.dev/) -- buffer font (15px); MonolisaCode Nerd Font for terminal (14px)
 
 ## Editor Settings
 
 - **Base keymap**: JetBrains
 - **Vim mode**: Enabled
-- **Buffer font**: MonoLisa, 15px
+- **Buffer font**: MonolisaCode, 15px
 - **UI font size**: 16px
-- **Terminal font**: MonoLisa Nerd Font, 14px
+- **Terminal font**: MonolisaCode Nerd Font, 14px
 - **Line numbers**: Relative (with auto-toggle via `toggle_relative_line_numbers`)
 - **Gutter line numbers**: Enabled
 - **Minimap**: Never shown
