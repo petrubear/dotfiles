@@ -21,7 +21,6 @@ return {
 			"javascript",
 			"typescript",
 			"json",
-			"jsonc",
 		})
 
 		-- This replaces the old 'highlight = { enable = true }'
