@@ -3,7 +3,7 @@ return {
 	dependencies = {
 		"folke/todo-comments.nvim",
 		-- "nvim-tree/nvim-web-devicons",
-		"DaikyXendo/nvim-material-icon",
+		"nvim-tree/nvim-web-devicons",
 	},
 	opts = {
 		focus = true,

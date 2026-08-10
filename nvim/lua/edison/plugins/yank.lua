@@ -1,6 +1,11 @@
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = vim.api.nvim_create_augroup("NativeYankHighlight", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 500 })
+	end,
+})
+
 return {
 	"machakann/vim-highlightedyank",
-	config = function()
-		vim.g.highlightedyank_highlight_duration = 500 -- Highlight for 500ms
-	end,
+	enabled = false,
 }
