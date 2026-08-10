@@ -29,6 +29,13 @@ keymap.set("n", "<leader>Y", '"+yy', { desc = "Yank line to system clipboard" })
 keymap.set("n", "<leader>p", '"+p', { desc = "Paste from system clipboard" })
 keymap.set("v", "<leader>p", '"_dP', { desc = "Paste over selection (preserve yank)" })
 
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = vim.api.nvim_create_augroup("NativeYankHighlight", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 500 })
+	end,
+})
+
 -- LSP
 keymap.set("n", "<leader>gg", "<cmd>lua vim.lsp.buf.hover()<CR>")
 keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
