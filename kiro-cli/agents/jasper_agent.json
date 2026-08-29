@@ -9,16 +9,24 @@
     "file://~/.kiro/steering/**/*.md",
     "file://~/.kiro/skills/jasper-helper/*.md"
   ],
-  "tools": ["*"],
+  "tools": [
+    "*"
+  ],
   "toolAliases": {},
   "allowedTools": [],
   "mcpServers": {},
-  "hooks": {},
+  "hooks": [],
   "toolsSettings": {
     "execute_bash": {
       "autoAllowReadonly": true
     }
   },
   "useLegacyMcpJson": false,
-  "model": "claude-sonnet-4.6"
+  "model": "claude-sonnet-4.6",
+  "permissions": {
+    "rules": [],
+    "policies": [
+      "read-only-shell"
+    ]
+  }
 }

@@ -5,27 +5,33 @@
   "mcpServers": {
     "context7": {
       "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"],
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
       "env": {
         "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
       },
       "disabled": false,
-      "autoApprove": ["resolve-library-id", "get-library-docs"]
+      "autoApprove": [
+        "resolve-library-id",
+        "get-library-docs"
+      ]
     }
   },
   "tools": [
-    "read",
-    "write",
-    "shell",
-    "report",
+    "@context7",
+    "delegate",
+    "glob",
+    "grep",
     "introspect",
     "knowledge",
+    "read",
+    "report",
+    "shell",
     "thinking",
-    "todo",
-    "delegate",
-    "grep",
-    "glob",
-    "@context7"
+    "todo_list",
+    "write"
   ],
   "resources": [
     "file://AmazonQ.md",
@@ -35,9 +41,33 @@
     "file://~/.kiro/shared/context7/*.md"
   ],
   "toolAliases": {},
-  "allowedTools": ["@context7", "read", "delegate", "use_subagent"],
-  "hooks": {},
+  "allowedTools": [
+    "@context7",
+    "read",
+    "delegate",
+    "use_subagent"
+  ],
+  "hooks": [],
   "toolsSettings": {},
   "useLegacyMcpJson": true,
-  "model": "claude-sonnet-4.6"
+  "model": "claude-sonnet-4.6",
+  "permissions": {
+    "rules": [
+      {
+        "capability": "fs_read",
+        "effect": "allow"
+      },
+      {
+        "capability": "subagent",
+        "effect": "allow"
+      },
+      {
+        "capability": "mcp",
+        "match": [
+          "context7/*"
+        ],
+        "effect": "allow"
+      }
+    ]
+  }
 }

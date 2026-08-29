@@ -5,11 +5,16 @@
   "mcpServers": {
     "sequential-thinking": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking@latest"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking@latest"
+      ],
       "disabled": false
     }
   },
-  "tools": ["*"],
+  "tools": [
+    "*"
+  ],
   "toolAliases": {},
   "allowedTools": [
     "read",
@@ -28,12 +33,27 @@
     "file://~/.kiro/steering/**/*.md",
     "file:///Users/martineze/.kiro/shared/log/*.md"
   ],
-  "hooks": {},
+  "hooks": [],
   "toolsSettings": {
     "execute_bash": {
       "autoAllowReadonly": true
     }
   },
   "useLegacyMcpJson": false,
-  "model": "claude-sonnet-4.6"
+  "model": "claude-sonnet-4.6",
+  "permissions": {
+    "rules": [
+      {
+        "capability": "fs_read",
+        "effect": "allow"
+      },
+      {
+        "capability": "subagent",
+        "effect": "allow"
+      }
+    ],
+    "policies": [
+      "read-only-shell"
+    ]
+  }
 }

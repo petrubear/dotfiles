@@ -53,6 +53,24 @@ return {
 			})[1]
 		end
 
+		local function venv_site_packages()
+			local venv = vim.fs.find(".venv", {
+				upward = true,
+				path = vim.fs.dirname(vim.api.nvim_buf_get_name(0)),
+				type = "directory",
+			})[1]
+			return venv and vim.fn.glob(venv .. "/lib/python*/site-packages", false, true)[1]
+		end
+
+		local pylint_base_args = {
+			"-f",
+			"json",
+			"--from-stdin",
+			function()
+				return vim.api.nvim_buf_get_name(0)
+			end,
+		}
+
 		local function try_linting()
 			local linters = lint.linters_by_ft[vim.bo.filetype]
 
@@ -65,6 +83,26 @@ return {
 				-- prefer the project's own venv pylint (can see project deps) over
 				-- the Mason-installed one (isolated env, always PATH-first)
 				lint.linters.pylint.cmd = venv_executable("pylint") or "pylint"
+
+				-- when pylint itself isn't installed inside the venv, it runs
+				-- with its own interpreter and can't see the venv's packages,
+				-- causing false "Unable to import" errors. Point it at the
+				-- venv's site-packages directly so it can still resolve them.
+				local site_packages = venv_site_packages()
+				if site_packages then
+					lint.linters.pylint.args = {
+						"-f",
+						"json",
+						"--from-stdin",
+						"--init-hook",
+						string.format("import sys; sys.path.insert(0, %q)", site_packages),
+						function()
+							return vim.api.nvim_buf_get_name(0)
+						end,
+					}
+				else
+					lint.linters.pylint.args = pylint_base_args
+				end
 			end
 
 			lint.try_lint(linters)

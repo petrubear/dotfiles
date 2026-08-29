@@ -17,7 +17,8 @@ return {
 				api_key_name = "OPENROUTER_API_KEY",
 				-- model = "qwen/qwen3.5-35b-a3b",
 				-- model = "qwen/qwen3-coder-next",
-				model = "minimax/minimax-m2.5",
+				-- model = "minimax/minimax-m2.5",
+				model = "openai/gpt-5.6-luna",
 			},
 			lmstudio = {
 				__inherited_from = "openai",

@@ -30,12 +30,31 @@
     "file://~/.kiro/shared/default/*.md",
     "file://~/.kiro/steering/**/*.md"
   ],
-  "hooks": {},
+  "hooks": [],
   "toolsSettings": {
     "execute_bash": {
       "autoAllowReadonly": true
     }
   },
   "includeMcpJson": true,
-  "model": "claude-sonnet-4.6"
+  "model": "claude-sonnet-4.6",
+  "permissions": {
+    "rules": [
+      {
+        "capability": "fs_read",
+        "effect": "allow"
+      },
+      {
+        "capability": "shell",
+        "effect": "allow"
+      },
+      {
+        "capability": "subagent",
+        "effect": "allow"
+      }
+    ],
+    "policies": [
+      "read-only-shell"
+    ]
+  }
 }

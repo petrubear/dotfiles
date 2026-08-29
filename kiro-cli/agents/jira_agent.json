@@ -26,7 +26,9 @@
       "transport": "stdio"
     }
   },
-  "tools": ["*"],
+  "tools": [
+    "*"
+  ],
   "toolAliases": {},
   "allowedTools": [
     "fetch",
@@ -41,12 +43,35 @@
     "@atlassian/getAccessibleAtlassianResources",
     "@atlassian/getJiraIssue"
   ],
-  "hooks": {},
+  "hooks": [],
   "toolsSettings": {
     "execute_bash": {
       "autoAllowReadonly": true
     }
   },
   "useLegacyMcpJson": true,
-  "model": "claude-sonnet-4.6"
+  "model": "claude-sonnet-4.6",
+  "permissions": {
+    "rules": [
+      {
+        "capability": "fs_read",
+        "effect": "allow"
+      },
+      {
+        "capability": "subagent",
+        "effect": "allow"
+      },
+      {
+        "capability": "mcp",
+        "match": [
+          "atlassian/getAccessibleAtlassianResources",
+          "atlassian/getJiraIssue"
+        ],
+        "effect": "allow"
+      }
+    ],
+    "policies": [
+      "read-only-shell"
+    ]
+  }
 }

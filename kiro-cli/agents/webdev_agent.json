@@ -16,7 +16,9 @@
       "transport": "stdio"
     }
   },
-  "tools": ["*"],
+  "tools": [
+    "*"
+  ],
   "toolAliases": {},
   "allowedTools": [
     "@chrome-dev-tools/click",
@@ -52,12 +54,50 @@
     "file://~/.kiro/steering/**/*.md",
     "file://~/.kiro/shared/webdev/*.md"
   ],
-  "hooks": {},
+  "hooks": [],
   "toolsSettings": {
     "execute_bash": {
       "autoAllowReadonly": true
     }
   },
   "useLegacyMcpJson": true,
-  "model": "claude-sonnet-4.6"
+  "model": "claude-sonnet-4.6",
+  "permissions": {
+    "rules": [
+      {
+        "capability": "fs_read",
+        "effect": "allow"
+      },
+      {
+        "capability": "subagent",
+        "effect": "allow"
+      },
+      {
+        "capability": "mcp",
+        "match": [
+          "chrome-dev-tools/click",
+          "chrome-dev-tools/evaluate_script",
+          "chrome-dev-tools/fill",
+          "chrome-dev-tools/get_computed_css",
+          "chrome-dev-tools/get_network_requests",
+          "chrome-dev-tools/go_back",
+          "chrome-dev-tools/go_forward",
+          "chrome-dev-tools/hover",
+          "chrome-dev-tools/list_console_messages",
+          "chrome-dev-tools/list_pages",
+          "chrome-dev-tools/navigate_page",
+          "chrome-dev-tools/new_page",
+          "chrome-dev-tools/press_key",
+          "chrome-dev-tools/select_page",
+          "chrome-dev-tools/take_screenshot",
+          "chrome-dev-tools/take_snapshot",
+          "chrome-dev-tools/wait_for"
+        ],
+        "effect": "allow"
+      }
+    ],
+    "policies": [
+      "read-only-shell"
+    ]
+  }
 }

@@ -1,4 +1,9 @@
 {
+  "chat.editor.fontFamily": "MonolisaCode, 'PragmataPro Mono Liga', Menlo",
+  "chat.editor.fontSize": 15,
+  "chat.fontFamily": "MonolisaCode, 'PragmataPro Mono Liga', Menlo",
+  "chat.fontSize": 15,
+  "claudeCode.preferredLocation": "panel",
   "editor.accessibilitySupport": "off",
   "editor.fontFamily": "MonolisaCode, 'PragmataPro Mono Liga', 'Jetbrains Mono', Menlo",
   "editor.fontLigatures": true,
@@ -7,9 +12,28 @@
   "editor.lineHeight": 20,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          "comment",
+          "keyword",
+          "variable.language",
+          "variable.parameter",
+          "storage.modifier",
+          "entity.name.type.class"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      }
+    ]
+  },
   "extensions.ignoreRecommendations": true,
   "json.schemaDownload.enable": true,
   "kiroAgent.agentAutonomy": "Supervised",
+  "kiroAgent.configureMCP": "Disabled",
+  "kiroAgent.trust.defaultScope": "user",
   "kiroAgent.trustedCommands": [
     "mvn clean compile",
     "mvn test",
@@ -34,22 +58,22 @@
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<leader>",
-        "w"
-      ],
       "after": [
         "<leader><leader>",
+        "w"
+      ],
+      "before": [
+        "<leader>",
         "w"
       ]
     },
     {
-      "before": [
-        "<leader>",
-        "b"
-      ],
       "after": [
         "<leader><leader>",
+        "b"
+      ],
+      "before": [
+        "<leader>",
         "b"
       ]
     },
@@ -126,84 +150,61 @@
       ]
     },
     {
-      "before": [
-        "<leader>",
-        "y"
-      ],
       "after": [
         "\"",
         "+",
+        "y"
+      ],
+      "before": [
+        "<leader>",
         "y"
       ]
     },
     {
-      "before": [
-        "<leader>",
-        "p"
-      ],
       "after": [
         "\"",
         "+",
         "p"
-      ]
-    }
-  ],
-  "vim.visualModeKeyBindingsNonRecursive": [
-    {
+      ],
       "before": [
         "<leader>",
-        "y"
-      ],
-      "after": [
-        "\"",
-        "+",
-        "y"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "p"
-      ],
-      "after": [
-        "\"",
-        "+",
         "p"
       ]
     }
   ],
   "vim.useSystemClipboard": false,
-  "workbench.activityBar.location": "top",
-  "workbench.colorTheme": "Dracula Pro",
-  "workbench.iconTheme": "material-icon-theme",
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "after": [
+        "\"",
+        "+",
+        "y"
+      ],
+      "before": [
+        "<leader>",
+        "y"
+      ]
+    },
+    {
+      "after": [
+        "\"",
+        "+",
+        "p"
+      ],
+      "before": [
+        "<leader>",
+        "p"
+      ]
+    }
+  ],
   "window.autoDetectColorScheme": true,
-  "workbench.preferredDarkColorTheme": "Dracula Pro (Van Helsing)",
-  "workbench.preferredLightColorTheme": "Dracula Pro (Alucard)",
   "window.systemColorTheme": "auto",
-  "claudeCode.preferredLocation": "panel",
-  "kiroAgent.configureMCP": "Disabled",
-  "chat.editor.fontFamily": "MonolisaCode, 'PragmataPro Mono Liga', Menlo",
-  "chat.editor.fontSize": 15,
-  "chat.fontSize": 15,
-  "chat.fontFamily": "MonolisaCode, 'PragmataPro Mono Liga', Menlo",
   "window.zoomLevel": 1,
   "window.zoomPerWindow": false,
+  "workbench.activityBar.location": "top",
+  "workbench.colorTheme": "PetruTheme Dark",
   "workbench.fontAliasing": "auto",
-  "editor.tokenColorCustomizations": {
-    "textMateRules": [
-      {
-        "scope": [
-          "comment",
-          "keyword",
-          "variable.language",
-          "variable.parameter",
-          "storage.modifier",
-          "entity.name.type.class"
-        ],
-        "settings": {
-          "fontStyle": "italic"
-        }
-      }
-    ]
-  }
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.preferredDarkColorTheme": "PetruTheme Dark",
+  "workbench.preferredLightColorTheme": "PetruTheme Light"
 }
