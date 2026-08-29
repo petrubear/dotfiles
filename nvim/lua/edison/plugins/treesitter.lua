@@ -9,18 +9,21 @@ return {
 		-- We just need to ensure the parsers are installed.
 		ts.install({
 			"bash",
+			"css",
+			"html",
 			"java",
+			"javascript",
+			"json",
+			"kotlin",
 			"lua",
 			"markdown",
 			"markdown_inline",
 			"python",
 			"query",
+			"typescript",
 			"vim",
 			"vimdoc",
 			"yaml",
-			"javascript",
-			"typescript",
-			"json",
 		})
 
 		-- This replaces the old 'highlight = { enable = true }'

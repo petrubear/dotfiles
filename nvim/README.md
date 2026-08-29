@@ -37,7 +37,7 @@ nvim/
 | lazy.nvim | folke | Plugin manager (auto-bootstraps) |
 | dracula_pro | Dracula | Active colorscheme (paid, local dir) |
 | dracula.nvim | Mofiqul | Fallback colorscheme (disabled) |
-| nvim-tree.lua | nvim-tree | File explorer (width 50, relative numbers) |
+| neo-tree.nvim | nvim-neo-tree | File explorer (width 35, async git status) |
 | telescope.nvim | nvim-telescope | Fuzzy finder (branch 0.1.x) |
 | telescope-fzf-native.nvim | nvim-telescope | FZF sorter for Telescope |
 | nvim-treesitter | nvim-treesitter | Syntax highlighting and parsing |
@@ -228,7 +228,7 @@ Automatically installed: bash, css, dockerfile, gitignore, graphql, html, java, 
 | `<Leader><Leader>w` | Flash jump | Normal |
 | `<Leader><Leader>b` | Flash jump | Normal |
 
-### File Explorer (nvim-tree)
+### File Explorer (neo-tree)
 
 | Keybind | Action | Mode |
 |---------|--------|------|

@@ -10,7 +10,7 @@ return {
 			"rcarriga/nvim-notify",
 			config = function()
 				require("notify").setup({
-					background_colour = "DraculaBgDark", -- Dracula Pro background
+					background_colour = "#0C0E11", -- PetruTheme mantle
 				})
 				-- Do NOT set vim.notify here; Noice manages that
 			end,
